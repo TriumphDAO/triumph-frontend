@@ -1,3 +1,4 @@
+import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 import { JsonRpcProvider, Web3Provider } from "@ethersproject/providers";
 import { IFrameEthereumProvider } from "@ledgerhq/iframe-provider";
 import WalletConnectProvider from "@walletconnect/web3-provider";
@@ -66,6 +67,13 @@ const initModal = new Web3Modal({
   // network: "mainnet", // optional
   cacheProvider: true, // optional
   providerOptions: {
+    coinbasewallet: {
+      package: CoinbaseWalletSDK,
+      options: {
+        appName: "TriumphDAO Demo",
+        infuraId: process.env.INFURA_KEY,
+      },
+    },
     walletconnect: {
       package: WalletConnectProvider,
       options: {

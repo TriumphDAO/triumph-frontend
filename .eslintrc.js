@@ -18,7 +18,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
   ],
-  plugins: ["@typescript-eslint", "simple-import-sort", "unused-imports"],
+  plugins: ["@typescript-eslint", "simple-import-sort", "unused-imports", "simple-import-sort"],
   rules: {
     "prettier/prettier": ["error"],
     "import/prefer-default-export": "off",
