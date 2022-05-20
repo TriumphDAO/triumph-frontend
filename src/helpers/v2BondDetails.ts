@@ -41,6 +41,7 @@ const OhmDetails: V2BondDetails = {
   name: "OHM",
   bondIconSvg: ["OHM"],
   pricingFunction: async () => {
+    //TODO:Change address
     return getTokenByContract("0x383518188c0c6d7730d91b2c03a03c837814a899");
   },
   isLP: false,
@@ -71,6 +72,7 @@ const gOhmDetails: V2BondDetails = {
   name: "gOHM",
   bondIconSvg: ["wsOHM"],
   pricingFunction: async () => {
+    //TODO:Change address
     return getTokenByContract("0x0ab87046fbb341d058f17cbc4c1133f25a20a52f");
   },
   isLP: false,
@@ -81,6 +83,7 @@ const LusdDetails: V2BondDetails = {
   name: "LUSD",
   bondIconSvg: ["LUSD"],
   pricingFunction: async () => {
+    //TODO:Change address
     return getTokenByContract("0x5f98805A4E8be255a32880FDeC7F6728C6568bA0");
   },
   isLP: false,
@@ -121,6 +124,7 @@ const FxsDetails: V2BondDetails = {
   name: "FXS",
   bondIconSvg: ["FXS"],
   pricingFunction: async () => {
+    //TODO:Change address
     return getTokenByContract("0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0");
   },
   isLP: false,
@@ -131,6 +135,7 @@ const UstDetails: V2BondDetails = {
   name: "UST",
   bondIconSvg: ["UST"],
   pricingFunction: async () => {
+    //TODO:Change address
     return getTokenByContract("0xa693b19d2931d498c5b318df961919bb4aee87a5");
   },
   isLP: false,
@@ -141,6 +146,7 @@ const WbtcDetails: V2BondDetails = {
   name: "wBTC",
   bondIconSvg: ["wBTC"],
   pricingFunction: async () => {
+    //TODO:Change address
     return getTokenByContract("0x2260fac5e5542a773aa44fbcfedf7c193bc2c599");
   },
   isLP: false,
@@ -155,7 +161,7 @@ const WbtcDetails: V2BondDetails = {
 //   },
 //   isLP: true,
 //   lpUrl: {
-//     [NetworkId.TESTNET_RINKEBY]:
+//     [NetworkId.TESTNET_RINKEBY]: //TODO:Change address
 //       "https://app.sushi.com/add/0x5eD8BD53B0c3fa3dEaBd345430B1A3a6A4e8BD7C/0x1e630a578967968eb02EF182a50931307efDa7CF",
 //     [NetworkId.MAINNET]:
 //       "https://app.sushi.com/add/0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5/0x6b175474e89094c44da98b954eedeac495271d0f",
@@ -171,7 +177,7 @@ const WbtcDetails: V2BondDetails = {
 //   isLP: true,
 //   lpUrl: {
 //     [NetworkId.TESTNET_RINKEBY]: "",
-//     [NetworkId.MAINNET]:
+//     [NetworkId.MAINNET]: //TODO:Change address
 //       "https://app.sushi.com/add/0x383518188C0C6d7730D91b2c03a03C837814a899/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
 //   },
 // };
@@ -184,7 +190,7 @@ const WbtcDetails: V2BondDetails = {
 //   },
 //   isLP: true,
 //   lpUrl: {
-//     [NetworkId.MAINNET]:
+//     [NetworkId.MAINNET]: //TODO:Change address
 //       "https://app.sushi.com/add/0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
 //   },
 // };
@@ -204,6 +210,7 @@ export const UnknownDetails: V2BondDetails = {
  */
 export const singleSidedBondDetails: { [key: number]: { [key: string]: V2BondDetails } } = {
   [NetworkId.TESTNET_RINKEBY]: {
+    //TODO:Change address
     ["0xc0b491dabf3709ee5eb79e603d73289ca6060932"]: OhmDetails,
     ["0xd7b98050962ec7cc8d11a83446b3217257c754b7"]: OhmDetails,
     ["0xb2180448f8945c8cc8ae9809e67d6bd27d8b2f2c"]: DaiDetails,
@@ -215,6 +222,7 @@ export const singleSidedBondDetails: { [key: number]: { [key: string]: V2BondDet
     // ["0x80edbf2f58c7b130df962bb485c28188f6b5ed29"]: OhmDaiDetails,
   },
   [NetworkId.MAINNET]: {
+    //TODO:Change address
     ["0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5"]: OhmDetails,
     ["0x04906695d6d12cf5459975d7c3c03356e4ccd460"]: sOhmDetails,
     ["0x0ab87046fbb341d058f17cbc4c1133f25a20a52f"]: gOhmDetails,
@@ -268,7 +276,7 @@ export class V2BondParser {
       console.log("in isLP if");
       return this._lpDetails();
     } else {
-      // return DAI as default
+      // return DAI as default //TODO:Change address
       return singleSidedBondDetails[NetworkId.MAINNET]["0x6b175474e89094c44da98b954eedeac495271d0f"];
     }
     return UnknownDetails;
