@@ -14,8 +14,9 @@ export default function Voting() {
             Voting for Triumph of the Commons will be setup in a Tricameral model, in order to insure representation of
             all interest groups in mutual balance. Bondholders will have the ability to vote on what assets the Treasury
             will consider a public good worth accepting into its Vault. Tokenholders for the protocol will vote on
-            ratios of assets to accept into the Treasury, and Risk Management voters will govern the collateralization
-            ratios that are required for each asset in order to mint the token when bonding.
+            ratios of assets to accept into the Treasury, and Risk Management voters will govern bond market terms, risk
+            assessment, and other factors such as the collateralization ratios that are required for each asset in order
+            to mint the token when bonding.
           </p>
 
           <Box display="flex" flexDirection="column" alignItems="center" mt={6}>
