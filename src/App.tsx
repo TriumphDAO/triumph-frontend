@@ -43,6 +43,7 @@ import { trackGAEvent } from "./helpers/analytics";
 import Wallet from "./components/TopBar/Wallet";
 import { getAllInverseBonds } from "./slices/InverseBondSlice";
 import { categoryTypesConfig, strategyTypesConfig } from "./helpers/multifarm";
+import Voting from "./components/Voting/Voting";
 
 // 😬 Sorry for all the console logging
 const DEBUG = false;
@@ -373,6 +374,10 @@ function App() {
                   oldAssetsDetected={oldAssetsDetected}
                   setMigrationModalOpen={setMigrationModalOpen}
                 />
+              </Route>
+
+              <Route path="/voting">
+                <Voting />
               </Route>
 
               <Route exact path="/give">
