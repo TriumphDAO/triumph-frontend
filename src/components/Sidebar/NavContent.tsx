@@ -26,7 +26,7 @@ import { IBondDetails } from "src/slices/BondSlice";
 import { getAllBonds, getUserNotes } from "src/slices/BondSliceV2";
 import { DisplayBondDiscount } from "src/views/BondV2/BondV2";
 
-import { ReactComponent as OlympusIcon } from "../../assets/icons/olympus-nav-header.svg";
+import { ReactComponent as TriumphIcon } from "../../assets/icons/triumph-nav-header.svg";
 import useBonds from "../../hooks/useBonds";
 import WalletAddressEns from "../TopBar/Wallet/WalletAddressEns";
 import externalUrls from "./externalUrls";
@@ -69,10 +69,11 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
             <Link href="https://olympusdao.finance" target="_blank">
               <SvgIcon
                 color="primary"
-                component={OlympusIcon}
+                component={TriumphIcon}
                 viewBox="0 0 151 100"
-                style={{ minWidth: "151px", minHeight: "98px", width: "151px" }}
+                style={{ minWidth: "151px", minHeight: "160px", width: "151px" }}
               />
+              <p style={{ fontSize: "20pt", marginBottom: "10px" }}>Triumph</p>
             </Link>
             <WalletAddressEns />
           </Box>
@@ -154,6 +155,7 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
                     </div>
                   </div>
                   <NavItem to="/stake" icon="stake" label={t`Stake`} />
+                  <NavItem to="/voting" icon="governance" label={t`Voting`} />
                 </>
               ) : (
                 <>
