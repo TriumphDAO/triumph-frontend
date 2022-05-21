@@ -83,7 +83,7 @@ function ChooseStraightBond() {
 
       {/* standard bonds for mobile, desktop is above */}
       {isSmallScreen && (
-        <Box className="ohm-card-container">
+        <Box className="toc-card-container">
           <Grid container item spacing={2}>
             {bondsV2.map(bond => {
               return (

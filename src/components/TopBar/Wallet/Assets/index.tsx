@@ -11,13 +11,13 @@ import { nonNullable } from "src/helpers/types/nonNullable";
 import { useAppSelector } from "src/hooks";
 import {
   useFuseBalance,
-  useGohmBalance,
-  useGohmTokemakBalance,
+  useGtocBalance,
+  useGtocTokemakBalance,
   useOhmBalance,
-  useSohmBalance,
+  useStocBalance,
   useV1OhmBalance,
-  useV1SohmBalance,
-  useWsohmBalance,
+  useV1StocBalance,
+  useWstocBalance,
 } from "src/hooks/useBalance";
 import { useCurrentIndex } from "src/hooks/useCurrentIndex";
 import { useOhmPrice } from "src/hooks/usePrices";
@@ -74,110 +74,110 @@ export interface OHMAssetsProps {
 const AssetsIndex: FC<OHMAssetsProps> = (props: { path?: string }) => {
   const history = useHistory();
   const networks = useTestableNetworks();
-  const { data: ohmPrice = 0 } = useOhmPrice();
+  const { data: tocPrice = 0 } = useOhmPrice();
   const { data: priceFeed = { usd_24h_change: -0 } } = GetTokenPrice();
   const { data: currentIndex = new DecimalBigNumber("0", 9) } = useCurrentIndex();
   const { data: nextRebaseDate } = useNextRebaseDate();
   const { data: rebaseRate = 0 } = useStakingRebaseRate();
-  const { data: ohmBalance = new DecimalBigNumber("0", 9) } = useOhmBalance()[networks.MAINNET];
+  const { data: tocBalance = new DecimalBigNumber("0", 9) } = useOhmBalance()[networks.MAINNET];
   const { data: v1OhmBalance = new DecimalBigNumber("0", 9) } = useV1OhmBalance()[networks.MAINNET];
-  const { data: v1SohmBalance = new DecimalBigNumber("0", 9) } = useV1SohmBalance()[networks.MAINNET];
-  const { data: sOhmBalance = new DecimalBigNumber("0", 9) } = useSohmBalance()[networks.MAINNET];
-  const wsohmBalances = useWsohmBalance();
-  const gohmBalances = useGohmBalance();
-  const { data: gohmFuseBalance = new DecimalBigNumber("0", 18) } = useFuseBalance()[NetworkId.MAINNET];
-  const { data: gohmTokemakBalance = new DecimalBigNumber("0", 18) } = useGohmTokemakBalance()[NetworkId.MAINNET];
+  const { data: v1StocBalance = new DecimalBigNumber("0", 9) } = useV1StocBalance()[networks.MAINNET];
+  const { data: sOhmBalance = new DecimalBigNumber("0", 9) } = useStocBalance()[networks.MAINNET];
+  const wstocBalances = useWstocBalance();
+  const gtocBalances = useGtocBalance();
+  const { data: gtocFuseBalance = new DecimalBigNumber("0", 18) } = useFuseBalance()[NetworkId.MAINNET];
+  const { data: gtocTokemakBalance = new DecimalBigNumber("0", 18) } = useGtocTokemakBalance()[NetworkId.MAINNET];
 
-  const gohmTokens = [
-    gohmFuseBalance,
-    gohmTokemakBalance,
-    gohmBalances[networks.MAINNET].data,
-    gohmBalances[NetworkId.ARBITRUM].data,
-    gohmBalances[NetworkId.AVALANCHE].data,
-    gohmBalances[NetworkId.POLYGON].data,
-    gohmBalances[NetworkId.FANTOM].data,
-    gohmBalances[NetworkId.OPTIMISM].data,
+  const gtocTokens = [
+    gtocFuseBalance,
+    gtocTokemakBalance,
+    gtocBalances[networks.MAINNET].data,
+    gtocBalances[NetworkId.ARBITRUM].data,
+    gtocBalances[NetworkId.AVALANCHE].data,
+    gtocBalances[NetworkId.POLYGON].data,
+    gtocBalances[NetworkId.FANTOM].data,
+    gtocBalances[NetworkId.OPTIMISM].data,
   ];
-  const wsohmTokens = [
-    wsohmBalances[NetworkId.MAINNET].data,
-    wsohmBalances[NetworkId.ARBITRUM].data,
-    wsohmBalances[NetworkId.AVALANCHE].data,
+  const wstocTokens = [
+    wstocBalances[NetworkId.MAINNET].data,
+    wstocBalances[NetworkId.ARBITRUM].data,
+    wstocBalances[NetworkId.AVALANCHE].data,
   ];
 
-  const totalGohmBalance = gohmTokens
+  const totalGtocBalance = gtocTokens
     .filter(nonNullable)
     .reduce((res, bal) => res.add(bal), new DecimalBigNumber("0", 18));
 
-  const totalWsohmBalance = wsohmTokens
+  const totalWstocBalance = wstocTokens
     .filter(nonNullable)
     .reduce((res, bal) => res.add(bal), new DecimalBigNumber("0", 18));
 
   const accountNotes: IUserNote[] = useAppSelector(state => state.bondingV2.notes);
-  const formattedohmBalance = ohmBalance.toFormattedString(4);
+  const formattedtocBalance = tocBalance.toFormattedString(4);
   const formattedV1OhmBalance = v1OhmBalance.toFormattedString(4);
-  const formattedV1SohmBalance = v1SohmBalance.toFormattedString(4);
-  const formattedWsOhmBalance = totalWsohmBalance.toFormattedString(4);
-  const formattedgOhmBalance = totalGohmBalance.toFormattedString(4);
+  const formattedV1StocBalance = v1StocBalance.toFormattedString(4);
+  const formattedWsOhmBalance = totalWstocBalance.toFormattedString(4);
+  const formattedgOhmBalance = totalGtocBalance.toFormattedString(4);
   const formattedSOhmBalance = sOhmBalance.toFormattedString(4);
   const gOhmPriceChange = priceFeed.usd_24h_change * currentIndex.toApproxNumber();
-  const gOhmPrice = ohmPrice * currentIndex.toApproxNumber();
+  const gOhmPrice = tocPrice * currentIndex.toApproxNumber();
   const rebaseAmountPerDay = rebaseRate * Number(formattedSOhmBalance) * 3;
-  const totalAsSohm = totalGohmBalance
+  const totalAsStoc = totalGtocBalance
     .mul(currentIndex, 9)
-    .add(totalWsohmBalance.mul(currentIndex, 9))
+    .add(totalWstocBalance.mul(currentIndex, 9))
     .add(sOhmBalance)
-    .add(v1SohmBalance);
+    .add(v1StocBalance);
 
-  const sOHMDailyForecast = formatNumber(totalAsSohm.toApproxNumber() * rebaseRate * 3, 2);
-  const usdDailyForecast = formatCurrency(Number(sOHMDailyForecast) * ohmPrice, 2);
+  const sOHMDailyForecast = formatNumber(totalAsStoc.toApproxNumber() * rebaseRate * 3, 2);
+  const usdDailyForecast = formatCurrency(Number(sOHMDailyForecast) * tocPrice, 2);
 
   const tokenArray = [
     {
       symbol: ["OHM"] as OHMTokenStackProps["tokens"],
-      balance: formattedohmBalance,
-      assetValue: Number(formattedohmBalance) * ohmPrice,
+      balance: formattedtocBalance,
+      assetValue: Number(formattedtocBalance) * tocPrice,
       alwaysShow: true,
     },
     {
       symbol: ["OHM"] as OHMTokenStackProps["tokens"],
       balance: formattedV1OhmBalance,
       label: "(v1)",
-      assetValue: Number(formattedV1OhmBalance) * ohmPrice,
+      assetValue: Number(formattedV1OhmBalance) * tocPrice,
     },
     {
       symbol: ["sOHM"] as OHMTokenStackProps["tokens"],
       balance: formattedSOhmBalance,
       timeRemaining:
         nextRebaseDate && `Stakes in ${prettifySeconds((nextRebaseDate.getTime() - new Date().getTime()) / 1000)}`,
-      assetValue: Number(formattedSOhmBalance) * ohmPrice,
+      assetValue: Number(formattedSOhmBalance) * tocPrice,
       alwaysShow: true,
       lineThreeLabel: "Rebases per day",
       lineThreeValue:
         Number(formattedSOhmBalance) > 0
-          ? `${trim(rebaseAmountPerDay, 3)} sOHM / ${formatCurrency(rebaseAmountPerDay * ohmPrice, 2)}`
+          ? `${trim(rebaseAmountPerDay, 3)} sOHM / ${formatCurrency(rebaseAmountPerDay * tocPrice, 2)}`
           : undefined,
     },
     {
       symbol: ["sOHM"] as OHMTokenStackProps["tokens"],
-      balance: formattedV1SohmBalance,
+      balance: formattedV1StocBalance,
       label: "(v1)",
       timeRemaining:
         nextRebaseDate && `Stakes in ${prettifySeconds((nextRebaseDate.getTime() - new Date().getTime()) / 1000)}`,
-      assetValue: Number(formattedV1SohmBalance) * ohmPrice,
+      assetValue: Number(formattedV1StocBalance) * tocPrice,
     },
     {
       symbol: ["wsOHM"] as OHMTokenStackProps["tokens"],
       balance: formattedWsOhmBalance,
       assetValue: gOhmPrice * Number(formattedWsOhmBalance),
-      geckoTicker: "governance-ohm",
+      geckoTicker: "governance-toc",
     },
     {
       symbol: ["gOHM"] as OHMTokenStackProps["tokens"],
       balance: formattedgOhmBalance,
       assetValue: gOhmPrice * Number(formattedgOhmBalance),
-      pnl: formattedgOhmBalance ? 0 : formatCurrency(totalGohmBalance.toApproxNumber() * gOhmPriceChange, 2),
+      pnl: formattedgOhmBalance ? 0 : formatCurrency(totalGtocBalance.toApproxNumber() * gOhmPriceChange, 2),
       alwaysShow: true,
-      geckoTicker: "governance-ohm",
+      geckoTicker: "governance-toc",
     },
   ];
 
@@ -192,7 +192,7 @@ const AssetsIndex: FC<OHMAssetsProps> = (props: { path?: string }) => {
     pnl: Number(note.payout) === 0 ? 0 : formatCurrency(note.payout * gOhmPriceChange, 2),
     ctaText: "Claim",
     ctaOnClick: () => history.push("/bonds"),
-    geckoTicker: "governance-ohm",
+    geckoTicker: "governance-toc",
   }));
 
   const classes = useStyles();
@@ -207,7 +207,7 @@ const AssetsIndex: FC<OHMAssetsProps> = (props: { path?: string }) => {
           <WalletBalance
             title="Balance"
             usdBalance={formatCurrency(walletTotalValueUSD, 2)}
-            underlyingBalance={`${formatNumber(walletTotalValueUSD / ohmPrice, 2)} OHM`}
+            underlyingBalance={`${formatNumber(walletTotalValueUSD / tocPrice, 2)} OHM`}
           />
           <WalletBalance
             className={classes.forecast}

@@ -61,9 +61,9 @@ const TransactionHistory: FC<OHMTransactionHistoryProps> = () => {
   const { data: gOhmTransfers, isFetched: gOhmTransfersFetched } = GetTransferHistory(
     addresses[networkId].GOHM_ADDRESS,
   );
-  const { data: ohmTransfers, isFetched: ohmTransfersFetched } = GetTransferHistory(addresses[networkId].OHM_V2);
+  const { data: tocTransfers, isFetched: tocTransfersFetched } = GetTransferHistory(addresses[networkId].OHM_V2);
   const { data: sOhmTransfers, isFetched: sOhmTransfersFetched } = GetTransferHistory(addresses[networkId].SOHM_V2);
-  const { data: ohmTransfersV1, isFetched: ohmTransfersV1Fetched } = GetTransferHistory(
+  const { data: tocTransfersV1, isFetched: tocTransfersV1Fetched } = GetTransferHistory(
     addresses[networkId].OHM_ADDRESS,
   );
   const { data: sOhmTransfersV1, isFetched: sOhmTransfersV1Fetched } = GetTransferHistory(
@@ -274,13 +274,13 @@ const TransactionHistory: FC<OHMTransactionHistoryProps> = () => {
     enabled: !!covalentTransactionsHasNextPage,
   });
 
-  const transfers = [gOhmTransfers, ohmTransfers, sOhmTransfers, ohmTransfersV1, sOhmTransfersV1, wsOhmTransfersV1];
+  const transfers = [gOhmTransfers, tocTransfers, sOhmTransfers, tocTransfersV1, sOhmTransfersV1, wsOhmTransfersV1];
   const loaded =
     covalentTransactionsIsFetched &&
     gOhmTransfersFetched &&
     sOhmTransfersFetched &&
-    ohmTransfersFetched &&
-    ohmTransfersV1Fetched &&
+    tocTransfersFetched &&
+    tocTransfersV1Fetched &&
     sOhmTransfersV1Fetched &&
     wsOhmTransfersV1Fetched;
 

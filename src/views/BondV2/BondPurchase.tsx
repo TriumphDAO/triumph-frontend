@@ -169,13 +169,13 @@ function BondPurchase({
                     <em>
                       <Typography variant="body1" align="center" color="textSecondary">
                         <Trans>First time bonding</Trans> <b>{bond.displayName}</b>? <br />{" "}
-                        <Trans>Please approve Olympus Dao to use your</Trans> <b>{bond.displayName}</b>{" "}
+                        <Trans>Please approve Triumph Dao to use your</Trans> <b>{bond.displayName}</b>{" "}
                         <Trans>for bonding</Trans>.
                       </Typography>
                     </em>
                   </div>
                 ) : (
-                  <FormControl className="ohm-input" fullWidth>
+                  <FormControl className="toc-input" fullWidth>
                     <Input
                       endString={t`Max`}
                       id="outlined-adornment-amount"

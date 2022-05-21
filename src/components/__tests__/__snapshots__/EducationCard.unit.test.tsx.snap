@@ -103,7 +103,7 @@ exports[`<CurrPositionGraphic/> should render component 1`] = `
 </div>
 `;
 
-exports[`<DepositSohm/> should render component 1`] = `
+exports[`<DepositStoc/> should render component 1`] = `
 <div>
   <div
     class="MuiBox-root MuiBox-root-35 sect"
@@ -183,7 +183,7 @@ exports[`<DepositSohm/> should render component 1`] = `
         class="MuiTypography-root education-message MuiTypography-body2 MuiTypography-alignCenter"
         style="line-height: 16px;"
       >
-        Olympus Give is a means of directing the yield that is accrued on your sOHM to another wallet. The first step is depositing your sOHM and specifying a recipient.
+        Triumph Give is a means of directing the yield that is accrued on your sOHM to another wallet. The first step is depositing your sOHM and specifying a recipient.
       </p>
     </div>
   </div>

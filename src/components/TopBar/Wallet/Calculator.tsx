@@ -7,11 +7,11 @@ import { DecimalBigNumber } from "src/helpers/DecimalBigNumber/DecimalBigNumber"
 import { nonNullable } from "src/helpers/types/nonNullable";
 import {
   useFuseBalance,
-  useGohmBalance,
-  useGohmTokemakBalance,
-  useSohmBalance,
-  useV1SohmBalance,
-  useWsohmBalance,
+  useGtocBalance,
+  useGtocTokemakBalance,
+  useStocBalance,
+  useV1StocBalance,
+  useWstocBalance,
 } from "src/hooks/useBalance";
 import { useCurrentIndex } from "src/hooks/useCurrentIndex";
 import { useProtocolMetrics } from "src/hooks/useProtocolMetrics";
@@ -102,43 +102,43 @@ const useStyles = makeStyles<Theme>(theme => ({
 const Calculator: FC = () => {
   const networks = useTestableNetworks();
   const { data: currentRebaseRate = 0 } = useStakingRebaseRate();
-  const gohmBalances = useGohmBalance();
-  const { data: sOhmBalance = new DecimalBigNumber("0", 9) } = useSohmBalance()[networks.MAINNET];
+  const gtocBalances = useGtocBalance();
+  const { data: sOhmBalance = new DecimalBigNumber("0", 9) } = useStocBalance()[networks.MAINNET];
   const { data: currentIndex = new DecimalBigNumber("0", 9) } = useCurrentIndex();
-  const { data: gohmFuseBalance = new DecimalBigNumber("0", 18) } = useFuseBalance()[NetworkId.MAINNET];
-  const { data: gohmTokemakBalance = new DecimalBigNumber("0", 18) } = useGohmTokemakBalance()[NetworkId.MAINNET];
-  const wsohmBalances = useWsohmBalance();
-  const { data: v1SohmBalance = new DecimalBigNumber("0", 9) } = useV1SohmBalance()[networks.MAINNET];
+  const { data: gtocFuseBalance = new DecimalBigNumber("0", 18) } = useFuseBalance()[NetworkId.MAINNET];
+  const { data: gtocTokemakBalance = new DecimalBigNumber("0", 18) } = useGtocTokemakBalance()[NetworkId.MAINNET];
+  const wstocBalances = useWstocBalance();
+  const { data: v1StocBalance = new DecimalBigNumber("0", 9) } = useV1StocBalance()[networks.MAINNET];
 
-  const gohmTokens = [
-    gohmFuseBalance,
-    gohmTokemakBalance,
-    gohmBalances[networks.MAINNET].data,
-    gohmBalances[NetworkId.ARBITRUM].data,
-    gohmBalances[NetworkId.AVALANCHE].data,
-    gohmBalances[NetworkId.POLYGON].data,
-    gohmBalances[NetworkId.FANTOM].data,
-    gohmBalances[NetworkId.OPTIMISM].data,
+  const gtocTokens = [
+    gtocFuseBalance,
+    gtocTokemakBalance,
+    gtocBalances[networks.MAINNET].data,
+    gtocBalances[NetworkId.ARBITRUM].data,
+    gtocBalances[NetworkId.AVALANCHE].data,
+    gtocBalances[NetworkId.POLYGON].data,
+    gtocBalances[NetworkId.FANTOM].data,
+    gtocBalances[NetworkId.OPTIMISM].data,
   ];
-  const wsohmTokens = [
-    wsohmBalances[NetworkId.MAINNET].data,
-    wsohmBalances[NetworkId.ARBITRUM].data,
-    wsohmBalances[NetworkId.AVALANCHE].data,
+  const wstocTokens = [
+    wstocBalances[NetworkId.MAINNET].data,
+    wstocBalances[NetworkId.ARBITRUM].data,
+    wstocBalances[NetworkId.AVALANCHE].data,
   ];
 
-  const totalGohmBalance = gohmTokens
+  const totalGtocBalance = gtocTokens
     .filter(nonNullable)
     .reduce((res, bal) => res.add(bal), new DecimalBigNumber("0", 18));
 
-  const totalWsohmBalance = wsohmTokens
+  const totalWstocBalance = wstocTokens
     .filter(nonNullable)
     .reduce((res, bal) => res.add(bal), new DecimalBigNumber("0", 18));
 
-  const walletSohm = totalGohmBalance
+  const walletStoc = totalGtocBalance
     .mul(currentIndex, 9)
-    .add(totalWsohmBalance.mul(currentIndex, 9))
+    .add(totalWstocBalance.mul(currentIndex, 9))
     .add(sOhmBalance)
-    .add(v1SohmBalance)
+    .add(v1StocBalance)
     .toApproxNumber();
 
   const [initialInvestment, setInitialInvestment] = useState(0);
@@ -157,17 +157,17 @@ const Calculator: FC = () => {
   const rebaseRate = advanced ? manualRebaseRate : +trim(currentRebaseRate, 7);
 
   const totalsOHM = (1 + rebaseRate) ** rebases * initialInvestment;
-  const sohmProfit = totalsOHM - initialInvestment;
-  const pieValue = (sohmProfit / totalsOHM) * 100;
+  const stocProfit = totalsOHM - initialInvestment;
+  const pieValue = (stocProfit / totalsOHM) * 100;
   useEffect(() => {
     setManualRebaseRate(+trim(currentRebaseRate, 7));
   }, [currentRebaseRate]);
 
   useEffect(() => {
-    setInitialInvestment(walletSohm);
-  }, [walletSohm]);
+    setInitialInvestment(walletStoc);
+  }, [walletStoc]);
 
-  const ROI = formatNumber((sohmProfit / initialInvestment) * 100);
+  const ROI = formatNumber((stocProfit / initialInvestment) * 100);
 
   const handleChange: any = (event: Event, newValue: number | number[]) => {
     if (typeof newValue === "number") {
@@ -181,7 +181,7 @@ const Calculator: FC = () => {
     }
   };
 
-  const formattedProfits = formatNumber(sohmProfit, 2);
+  const formattedProfits = formatNumber(stocProfit, 2);
   const formattedInitialInvestment = formatNumber(initialInvestment, 2);
 
   const durations = [

@@ -5,12 +5,12 @@
   flex-direction: column;
   overflow: hidden;
 
-  .ohm-card-container {
+  .toc-card-container {
     width: 100%;
     margin-bottom: 15px;
   }
 
-  .ohm-card .bond-hero h4 {
+  .toc-card .bond-hero h4 {
     font-weight: 600 !important;
 
     .MuiSkeleton-root {
@@ -40,7 +40,7 @@
 
   .bond-data-card {
     margin: auto;
-    .ohm-pairs {
+    .toc-pairs {
       display: flex;
       margin-right: 15px;
     }

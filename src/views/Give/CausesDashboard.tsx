@@ -52,9 +52,9 @@ export default function CausesDashboard() {
       return dispatch(error(t`Please enter a value!`));
     }
 
-    // If on Rinkeby and using Mock Sohm, use the changeMockGive async thunk
+    // If on Rinkeby and using Mock Stoc, use the changeMockGive async thunk
     // Else use standard call
-    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)) {
+    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)) {
       await dispatch(
         changeMockGive({
           action: ACTION_GIVE,
@@ -92,7 +92,7 @@ export default function CausesDashboard() {
   };
 
   // TODO shift the custom-recipient div back to Paper
-  // https://github.com/OlympusDAO/component-library/issues/111
+  // https://github.com/TriumphDAO/component-library/issues/111
   return (
     <div
       id="give-view"
@@ -100,7 +100,7 @@ export default function CausesDashboard() {
       ${isSmallScreen ? "smaller" : ""}}`}
     >
       <Zoom in={true}>
-        <Box className={`ohm-card secondary causes-container`}>
+        <Box className={`toc-card secondary causes-container`}>
           {!isSupportedChain(networkId) ? (
             <Typography variant="h6">
               Note: You are currently using an unsupported network. Please switch to Ethereum to experience the full

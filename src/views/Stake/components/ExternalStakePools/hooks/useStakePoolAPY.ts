@@ -13,7 +13,7 @@ import {
   useStaticZipRewarderContract,
   useStaticZipSecondaryRewardercontract,
 } from "src/hooks/useContract";
-import { useGohmPrice } from "src/hooks/usePrices";
+import { useGtocPrice } from "src/hooks/usePrices";
 import { ExternalPool } from "src/lib/ExternalPool";
 
 import { BalancerPoolTVL, useStakePoolTVL } from "./useStakePoolTVL";
@@ -107,17 +107,17 @@ const APY = (
   data?: { poolRewardsPerWeek: number; rewarderRewardsPerSecond: number },
 ) => {
   const useDependentQuery = createDependentQuery(stakePoolAPYQueryKey(pool));
-  const { data: gohmPrice } = useGohmPrice();
+  const { data: gtocPrice } = useGtocPrice();
   const rewardPrice = useDependentQuery("rewardPrice", () => getTokenPrice(pool.rewardGecko));
   return useQuery<number, Error>(
     ["APY", pool],
     () => {
-      queryAssertion(gohmPrice && rewardPrice && tvl && data);
+      queryAssertion(gtocPrice && rewardPrice && tvl && data);
       const rewarderRewardsPerWeek = data.rewarderRewardsPerSecond * 604800;
       const baseRewardAPY = ((data.poolRewardsPerWeek * rewardPrice) / tvl) * 52;
-      const bonusRewardsAPY = ((rewarderRewardsPerWeek * gohmPrice) / tvl) * 52;
+      const bonusRewardsAPY = ((rewarderRewardsPerWeek * gtocPrice) / tvl) * 52;
       return baseRewardAPY + bonusRewardsAPY;
     },
-    { enabled: !!tvl && !!gohmPrice && !!rewardPrice && !!data },
+    { enabled: !!tvl && !!gtocPrice && !!rewardPrice && !!data },
   );
 };

@@ -32,9 +32,9 @@ export default function RedeemYield() {
   const isAppLoading = useSelector((state: DonationInfoState) => state.app.loading);
 
   const redeemableBalance = useSelector((state: DonationInfoState) => {
-    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)
-      ? state.account.mockRedeeming && state.account.mockRedeeming.sohmRedeemable
-      : state.account.redeeming && state.account.redeeming.sohmRedeemable;
+    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)
+      ? state.account.mockRedeeming && state.account.mockRedeeming.stocRedeemable
+      : state.account.redeeming && state.account.redeeming.stocRedeemable;
   });
 
   const recipientInfo = useSelector((state: DonationInfoState) => {
@@ -131,7 +131,7 @@ export default function RedeemYield() {
   };
 
   const handleRedeemYieldModalSubmit = async () => {
-    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)) {
+    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)) {
       await dispatch(redeemMockBalance({ address, provider, networkID: networkId, eventSource: "Redeem" }));
     } else {
       await dispatch(redeemBalance({ address, provider, networkID: networkId, eventSource: "Redeem" }));

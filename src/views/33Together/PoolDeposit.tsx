@@ -27,8 +27,8 @@ export const PoolDeposit = (props: PoolDepositProps) => {
   const [isDepositing, setDepositing] = useState(false);
   const isMobileScreen = useMediaQuery("(max-width: 513px)");
 
-  const sohmBalance = useAppSelector(state => {
-    return state.account.balances && state.account.balances.sohmV1;
+  const stocBalance = useAppSelector(state => {
+    return state.account.balances && state.account.balances.stocV1;
   });
 
   const poolBalance = useAppSelector(state => {
@@ -36,7 +36,7 @@ export const PoolDeposit = (props: PoolDepositProps) => {
   });
 
   const poolAllowance = useAppSelector(state => {
-    return state.account.pooling && state.account.pooling.sohmPool;
+    return state.account.pooling && state.account.pooling.stocPool;
   });
 
   const pendingTransactions = useAppSelector(state => {
@@ -78,7 +78,7 @@ export const PoolDeposit = (props: PoolDepositProps) => {
   }, [poolAllowance]);
 
   const setMax = () => {
-    const value = parseFloat(sohmBalance);
+    const value = parseFloat(stocBalance);
     setQuantity(value);
     const userBalanceAfterDeposit = poolBalance + value;
 
@@ -135,7 +135,7 @@ export const PoolDeposit = (props: PoolDepositProps) => {
   } else {
     inputWrapperDisabled = isPendingTxn(pendingTransactions, "approve_pool_together");
     inputWrapperButtonText = txnButtonText(pendingTransactions, "approve_pool_together", t`Approve`);
-    inputWrapperOnClick = () => onSeekApproval("sohm");
+    inputWrapperOnClick = () => onSeekApproval("stoc");
   }
   return (
     <Box display="flex" justifyContent="center" className="pool-deposit-ui">
@@ -171,7 +171,7 @@ export const PoolDeposit = (props: PoolDepositProps) => {
           <div className={`stake-user-data`}>
             <DataRow
               title={t`Your Staked Balance (Depositable)`}
-              balance={`${new Intl.NumberFormat("en-US").format(parseFloat(sohmBalance))} sOHM`}
+              balance={`${new Intl.NumberFormat("en-US").format(parseFloat(stocBalance))} sOHM`}
               isLoading={isAppLoading}
             />
           </div>

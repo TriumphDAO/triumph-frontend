@@ -22,7 +22,7 @@ const Zap: React.FC = () => {
   const inputTokenImages = useMemo(
     () =>
       Object.entries(tokens)
-        .filter(token => token[0] !== "sohm")
+        .filter(token => token[0] !== "stoc")
         .map(token => token[1].tokenImageUrl)
         .slice(0, 3),
     [tokens],

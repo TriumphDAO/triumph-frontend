@@ -151,7 +151,7 @@ function ChooseBond() {
       </Zoom>
 
       {isSmallScreen && (
-        <Box className="ohm-card-container">
+        <Box className="toc-card-container">
           <Grid container item spacing={2}>
             {bonds.map(bond => {
               // NOTE (appleseed): temporary for ONHOLD MIGRATION

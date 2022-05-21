@@ -7,8 +7,8 @@ import { GOHM_ADDRESSES, SOHM_ADDRESSES, STAKING_ADDRESSES } from "src/constants
 import { useBalance } from "src/hooks/useBalance";
 import { useTestableNetworks } from "src/hooks/useTestableNetworks";
 
-import { useUnwrapGohm } from "./hooks/useUnwrapGohm";
-import { useWrapSohm } from "./hooks/useWrapSohm";
+import { useUnwrapGtoc } from "./hooks/useUnwrapGtoc";
+import { useWrapStoc } from "./hooks/useWrapStoc";
 
 export const WrapInputArea = () => {
   const networks = useTestableNetworks();
@@ -21,8 +21,8 @@ export const WrapInputArea = () => {
   const setMax = () => balance && setAmount(balance.toAccurateString());
 
   // Mutation stuff
-  const wrapMutation = useWrapSohm();
-  const unwrapMutation = useUnwrapGohm();
+  const wrapMutation = useWrapStoc();
+  const unwrapMutation = useUnwrapGtoc();
   const { isLoading: isMutating } = currentAction === "WRAP" ? wrapMutation : unwrapMutation;
   const handleSubmit = (event: React.FormEvent<WrapFormElement>) => {
     event.preventDefault();
@@ -75,13 +75,13 @@ export const WrapInputArea = () => {
               <>
                 <Trans>First time wrapping</Trans> <b>sOHM</b>?
                 <br />
-                <Trans>Please approve Olympus DAO to use your</Trans> <b>sOHM</b> <Trans>for wrapping</Trans>.
+                <Trans>Please approve Triumph DAO to use your</Trans> <b>sOHM</b> <Trans>for wrapping</Trans>.
               </>
             ) : (
               <>
                 <Trans>First time unwrapping</Trans> <b>gOHM</b>?
                 <br />
-                <Trans>Please approve Olympus DAO to use your</Trans> <b>gOHM</b> <Trans>for unwrapping</Trans>.
+                <Trans>Please approve Triumph DAO to use your</Trans> <b>gOHM</b> <Trans>for unwrapping</Trans>.
               </>
             )
           }

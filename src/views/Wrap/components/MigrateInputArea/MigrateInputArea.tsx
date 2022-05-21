@@ -9,7 +9,7 @@ import { useWeb3Context } from "src/hooks";
 import { useBalance } from "src/hooks/useBalance";
 import { useTestableNetworks } from "src/hooks/useTestableNetworks";
 
-import { useMigrateWsohm } from "./hooks/useMigrateWsohm";
+import { useMigrateWstoc } from "./hooks/useMigrateWstoc";
 
 export const MigrateInputArea = () => {
   const networks = useTestableNetworks();
@@ -25,7 +25,7 @@ export const MigrateInputArea = () => {
   const setMax = () => balance && setAmount(balance.toAccurateString());
 
   // Mutation stuff
-  const migrateMutation = useMigrateWsohm();
+  const migrateMutation = useMigrateWstoc();
   const handleSubmit = (event: React.FormEvent<WrapFormElement>) => {
     event.preventDefault();
     migrateMutation.mutate(amount);
@@ -59,7 +59,7 @@ export const MigrateInputArea = () => {
           spenderAddressMap={MIGRATOR_ADDRESSES}
           message={
             <>
-              <Trans>Please approve Olympus DAO to use your</Trans> <b>wsOHM</b> <Trans>for migrating</Trans>.
+              <Trans>Please approve Triumph DAO to use your</Trans> <b>wsOHM</b> <Trans>for migrating</Trans>.
             </>
           }
         >

@@ -2,7 +2,7 @@ import { render } from "../../testUtils";
 import {
   ArrowGraphic,
   CurrPositionGraphic,
-  DepositSohm,
+  DepositStoc,
   LockInVault,
   NewPositionGraphic,
   ReceivesYield,
@@ -61,9 +61,9 @@ describe("<VaultGraphic/>", () => {
   });
 });
 
-describe("<DepositSohm/>", () => {
+describe("<DepositStoc/>", () => {
   it("should render component", () => {
-    const { container } = render(<DepositSohm message={"test123"} />);
+    const { container } = render(<DepositStoc message={"test123"} />);
     expect(container).toMatchSnapshot();
   });
 });
