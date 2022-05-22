@@ -31,9 +31,9 @@ exports[`<Wrap/> should render component 1`] = `
               class="top-right"
             >
               <a
-                aria-label="wsohm-wut"
-                class="MuiTypography-root MuiLink-root MuiLink-underlineNone migrate-sohm-button MuiTypography-colorPrimary"
-                href="https://docs.olympusdao.finance/main/contracts/tokens#gohm"
+                aria-label="wstoc-wut"
+                class="MuiTypography-root MuiLink-root MuiLink-underlineNone migrate-stoc-button MuiTypography-colorPrimary"
+                href="https://docs.olympusdao.finance/main/contracts/tokens#gtoc"
                 style="text-decoration: none;"
                 target="_blank"
               >

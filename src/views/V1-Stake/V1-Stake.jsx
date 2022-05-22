@@ -37,8 +37,8 @@ import { changeApproval, changeStake } from "../../slices/StakeThunk";
 import ExternalStakePools from "../Stake/components/ExternalStakePools/ExternalStakePools";
 import RebaseTimer from "../Stake/components/StakeArea/components/RebaseTimer/RebaseTimer";
 
-const sOhmImg = getTokenImage("sohm");
-const ohmImg = getOhmTokenImage(16, 16);
+const sOhmImg = getTokenImage("stoc");
+const tocImg = getOhmTokenImage(16, 16);
 
 function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds }) {
   const dispatch = useDispatch();
@@ -56,23 +56,23 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
   const fiveDayRate = useSelector(state => {
     return state.app.fiveDayRate;
   });
-  const ohmBalance = useSelector(state => {
-    return state.account.balances && state.account.balances.ohmV1;
+  const tocBalance = useSelector(state => {
+    return state.account.balances && state.account.balances.tocV1;
   });
-  const sohmBalance = useSelector(state => {
-    return state.account.balances && state.account.balances.sohmV1;
+  const stocBalance = useSelector(state => {
+    return state.account.balances && state.account.balances.stocV1;
   });
-  const fsohmBalance = useSelector(state => {
-    return state.account.balances && state.account.balances.fsohm;
+  const fstocBalance = useSelector(state => {
+    return state.account.balances && state.account.balances.fstoc;
   });
-  const wsohmBalance = useSelector(state => {
-    return state.account.balances && state.account.balances.wsohm;
+  const wstocBalance = useSelector(state => {
+    return state.account.balances && state.account.balances.wstoc;
   });
   const stakeAllowance = useSelector(state => {
-    return state.account.staking && state.account.staking.ohmStakeV1;
+    return state.account.staking && state.account.staking.tocStakeV1;
   });
   const unstakeAllowance = useSelector(state => {
-    return state.account.staking && state.account.staking.ohmUnstakeV1;
+    return state.account.staking && state.account.staking.tocUnstakeV1;
   });
   const stakingRebase = useSelector(state => {
     return state.app.stakingRebase;
@@ -88,29 +88,29 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
     return state.pendingTransactions;
   });
 
-  const fiatDaowsohmBalance = useAppSelector(state => {
-    return state.account.balances && state.account.balances.fiatDaowsohm;
+  const fiatDaowstocBalance = useAppSelector(state => {
+    return state.account.balances && state.account.balances.fiatDaowstoc;
   });
 
   const gOhmBalance = useAppSelector(state => {
-    return state.account.balances && state.account.balances.gohm;
+    return state.account.balances && state.account.balances.gtoc;
   });
-  const sohmV2Balance = useSelector(state => {
-    return state.account.balances && state.account.balances.sohm;
+  const stocV2Balance = useSelector(state => {
+    return state.account.balances && state.account.balances.stoc;
   });
 
-  const calculateWrappedAsSohm = balance => {
+  const calculateWrappedAsStoc = balance => {
     return Number(balance) * Number(currentIndex);
   };
-  const fiatDaoAsSohm = calculateWrappedAsSohm(fiatDaowsohmBalance);
-  const gOhmAsSohm = calculateWrappedAsSohm(gOhmBalance);
-  const wsohmAsSohm = calculateWrappedAsSohm(wsohmBalance);
+  const fiatDaoAsStoc = calculateWrappedAsStoc(fiatDaowstocBalance);
+  const gOhmAsStoc = calculateWrappedAsStoc(gOhmBalance);
+  const wstocAsStoc = calculateWrappedAsStoc(wstocBalance);
 
   const setMax = () => {
     if (view === 0) {
-      setQuantity(ohmBalance);
+      setQuantity(tocBalance);
     } else {
-      setQuantity(sohmBalance);
+      setQuantity(stocBalance);
     }
   };
 
@@ -127,11 +127,11 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
 
     // 1st catch if quantity > balance
     let gweiValue = ethers.utils.parseUnits(quantity, "gwei");
-    if (action === "stake" && gweiValue.gt(ethers.utils.parseUnits(ohmBalance, "gwei"))) {
+    if (action === "stake" && gweiValue.gt(ethers.utils.parseUnits(tocBalance, "gwei"))) {
       return dispatch(error("You cannot stake more than your OHM balance."));
     }
 
-    if (action === "unstake" && gweiValue.gt(ethers.utils.parseUnits(sohmBalance, "gwei"))) {
+    if (action === "unstake" && gweiValue.gt(ethers.utils.parseUnits(stocBalance, "gwei"))) {
       return dispatch(error("You cannot unstake more than your sOHM balance."));
     }
 
@@ -142,8 +142,8 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
 
   const hasAllowance = useCallback(
     token => {
-      if (token === "ohm") return stakeAllowance > 0;
-      if (token === "sohm") return unstakeAllowance > 0;
+      if (token === "toc") return stakeAllowance > 0;
+      if (token === "stoc") return unstakeAllowance > 0;
       return 0;
     },
     [stakeAllowance, unstakeAllowance],
@@ -156,7 +156,7 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
   };
 
   const trimmedBalance = Number(
-    [sohmBalance, gOhmAsSohm, sohmV2Balance, wsohmAsSohm, fiatDaoAsSohm, fsohmBalance]
+    [stocBalance, gOhmAsStoc, stocV2Balance, wstocAsStoc, fiatDaoAsStoc, fstocBalance]
       .filter(Boolean)
       .map(balance => Number(balance))
       .reduce((a, b) => a + b, 0)
@@ -256,13 +256,13 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
 
                     <Box className="stake-action-row v1-row " display="flex" alignItems="center">
                       {address && !isAllowanceDataLoading ? (
-                        !hasAllowance("sohm") && view === 1 ? (
+                        !hasAllowance("stoc") && view === 1 ? (
                           <Box mt={"10px"}>
                             <Typography variant="body1" className="stake-note" color="textSecondary">
                               <>
                                 <Trans>First time unstaking</Trans> <b>sOHM</b>?
                                 <br />
-                                <Trans>Please approve Olympus Dao to use your</Trans> <b>sOHM </b>
+                                <Trans>Please approve Triumph Dao to use your</Trans> <b>sOHM </b>
                                 <Trans> for unstaking</Trans>.
                               </>
                             </Typography>
@@ -270,7 +270,7 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                         ) : (
                           <>
                             {view === 1 && (
-                              <FormControl className="ohm-input" variant="outlined" color="primary">
+                              <FormControl className="toc-input" variant="outlined" color="primary">
                                 <InputLabel htmlFor="amount-input"></InputLabel>
                                 <OutlinedInput
                                   id="amount-input"
@@ -337,7 +337,7 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                       <TabPanel value={view} index={1}>
                         {isAllowanceDataLoading ? (
                           <Skeleton />
-                        ) : address && hasAllowance("sohm") ? (
+                        ) : address && hasAllowance("stoc") ? (
                           <Button
                             className="stake-button"
                             variant="contained"
@@ -356,7 +356,7 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                             color="primary"
                             disabled={isPendingTxn(pendingTransactions, "approve_unstaking")}
                             onClick={() => {
-                              onSeekApproval("sohm");
+                              onSeekApproval("stoc");
                             }}
                           >
                             {txnButtonText(pendingTransactions, "approve_unstaking", t`Approve`)}
@@ -369,7 +369,7 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                     <DataRow
                       title={`${t`Unstaked Balance`} (v1)`}
                       id="user-balance"
-                      balance={`${trim(Number(ohmBalance), 4)} OHM`}
+                      balance={`${trim(Number(tocBalance), 4)} OHM`}
                       isLoading={isAppLoading}
                     />
                     <Accordion className="stake-accordion" square>
@@ -384,37 +384,37 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                       <AccordionDetails>
                         <DataRow
                           title={`${t`sOHM Balance`} (v1)`}
-                          balance={`${trim(Number(sohmBalance), 4)} sOHM`}
+                          balance={`${trim(Number(stocBalance), 4)} sOHM`}
                           indented
                           isLoading={isAppLoading}
                         />
-                        {Number(fsohmBalance) > 0.00009 && (
+                        {Number(fstocBalance) > 0.00009 && (
                           <DataRow
                             title={`${t`gOHM Balance in Fuse`}`}
-                            balance={`${trim(Number(fsohmBalance), 4)} gOHM`}
+                            balance={`${trim(Number(fstocBalance), 4)} gOHM`}
                             indented
                             isLoading={isAppLoading}
                           />
                         )}
-                        {Number(wsohmBalance) > 0.0 && (
+                        {Number(wstocBalance) > 0.0 && (
                           <DataRow
                             title={`${t`wsOHM Balance`} (v1)`}
-                            balance={`${trim(Number(wsohmBalance), 4)} wsOHM`}
+                            balance={`${trim(Number(wstocBalance), 4)} wsOHM`}
                             isLoading={isAppLoading}
                             indented
                           />
                         )}
-                        {Number(fiatDaowsohmBalance) > 0.00009 && (
+                        {Number(fiatDaowstocBalance) > 0.00009 && (
                           <DataRow
                             title={`${t`wsOHM Balance in FiatDAO`} (v1)`}
-                            balance={`${trim(Number(fiatDaowsohmBalance), 4)} wsOHM`}
+                            balance={`${trim(Number(fiatDaowstocBalance), 4)} wsOHM`}
                             isLoading={isAppLoading}
                             indented
                           />
                         )}
                         <DataRow
                           title={`${t`sOHM Balance`} (v2)`}
-                          balance={`${trim(Number(sohmV2Balance), 4)} sOHM`}
+                          balance={`${trim(Number(stocV2Balance), 4)} sOHM`}
                           indented
                           isLoading={isAppLoading}
                         />

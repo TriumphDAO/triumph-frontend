@@ -6,10 +6,10 @@ query {
   protocolMetrics(first: 100, orderBy: timestamp, orderDirection: desc) {
     id
     timestamp
-    ohmCirculatingSupply
+    tocCirculatingSupply
     sOhmCirculatingSupply
     totalSupply
-    ohmPrice
+    tocPrice
     marketCap
     totalValueLocked
     treasuryRiskFreeValue

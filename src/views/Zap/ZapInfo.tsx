@@ -70,7 +70,7 @@ const ZapInfo: React.FC<ZapInfoProps> = ({ tokens, address }) => {
     });
   };
   return (
-    <Paper className="ohm-card" id="olyzaps-info">
+    <Paper className="toc-card" id="olyzaps-info">
       <Grid container direction="row" spacing={4}>
         <Grid item sm={12} md={4} classes={{ root: classes.infoBox, item: classes.infoBoxItem }}>
           <Box
@@ -118,7 +118,7 @@ const ZapInfo: React.FC<ZapInfoProps> = ({ tokens, address }) => {
               <Trans>All-in-one easy staking</Trans>
             </Typography>
             <Typography align="left" variant="body2" className="oly-info-body">
-              <Trans>OlyZap reduces complexity, saves you time and keeps you here on Olympus.</Trans>
+              <Trans>OlyZap reduces complexity, saves you time and keeps you here on Triumph.</Trans>
             </Typography>
           </Box>
         </Grid>
@@ -142,7 +142,7 @@ const ZapInfo: React.FC<ZapInfoProps> = ({ tokens, address }) => {
             </Typography>
             <Typography align="left" variant="body2" className="oly-info-body">
               <Trans>
-                Staking is the primary value accrual strategy of Olympus. When you stake, you lock OHM and receive an
+                Staking is the primary value accrual strategy of Triumph. When you stake, you lock OHM and receive an
                 equal value of sOHM or gOHM.
               </Trans>
             </Typography>

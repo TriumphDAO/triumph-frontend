@@ -53,12 +53,12 @@ function MigrationModalSingle({ open, handleClose }: { open: boolean; handleClos
     approvedOhmBalance,
     approvedSOhmBalance,
     approvedWSOhmBalance,
-    ohmFullApproval,
+    tocFullApproval,
     sOhmFullApproval,
     wsOhmFullApproval,
-    ohmAsgOHM,
+    tocAsgOHM,
     sOHMAsgOHM,
-    ohmInUSD,
+    tocInUSD,
     sOhmInUSD,
     wsOhmInUSD,
     isGOHM,
@@ -76,11 +76,11 @@ function MigrationModalSingle({ open, handleClose }: { open: boolean; handleClos
       initialAsset: "OHM",
       initialBalance: currentOhmBalance,
       targetAsset: targetAsset,
-      targetBalance: ohmAsgOHM * targetMultiplier,
-      fullApproval: ohmFullApproval,
-      usdBalance: ohmInUSD,
+      targetBalance: tocAsgOHM * targetMultiplier,
+      fullApproval: tocFullApproval,
+      usdBalance: tocInUSD,
       type: TokenType.UNSTAKED,
-      display: gOHMPrice! * ohmAsgOHM > 10,
+      display: gOHMPrice! * tocAsgOHM > 10,
     },
     {
       initialAsset: "sOHM",
@@ -120,7 +120,7 @@ function MigrationModalSingle({ open, handleClose }: { open: boolean; handleClos
           {!oldAssetsDetected ? null : (
             <Box paddingTop={isMobileScreen ? 2 : 4} paddingBottom={isMobileScreen ? 2 : 0}>
               <Typography id="migration-modal-description" variant="body2" className={isMobileScreen ? `mobile` : ``}>
-                {t`Olympus v2 introduces upgrades to on-chain governance and bonds to enhance decentralization and immutability.`}{" "}
+                {t`Triumph v2 introduces upgrades to on-chain governance and bonds to enhance decentralization and immutability.`}{" "}
                 <a
                   href="https://docs.olympusdao.finance/main/basics/migration"
                   target="_blank"
@@ -150,8 +150,8 @@ function MigrationModalSingle({ open, handleClose }: { open: boolean; handleClos
             aria-label="payout token tabs"
             className="payout-token-tabs"
           >
-            <Tab aria-label="payout-sohm-button" label="sOHM" className="payout-token-tab" />
-            <Tab aria-label="payout-sohm-button" label="gOHM" className="payout-token-tab" />
+            <Tab aria-label="payout-stoc-button" label="sOHM" className="payout-token-tab" />
+            <Tab aria-label="payout-stoc-button" label="gOHM" className="payout-token-tab" />
           </Tabs>
           {isMobileScreen ? (
             <Box id="mobile-container-migration">

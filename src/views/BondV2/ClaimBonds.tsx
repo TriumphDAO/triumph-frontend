@@ -93,8 +93,8 @@ function ClaimBonds({ activeNotes }: { activeNotes: IUserNote[] }) {
               aria-label="payout token tabs"
               className="payout-token-tabs"
             >
-              <Tab aria-label="payout-sohm-button" label="sOHM" className="payout-token-tab" />
-              <Tab aria-label="payout-sohm-button" label="gOHM" className="payout-token-tab" />
+              <Tab aria-label="payout-stoc-button" label="sOHM" className="payout-token-tab" />
+              <Tab aria-label="payout-stoc-button" label="gOHM" className="payout-token-tab" />
             </Tabs>
           </Box>
 

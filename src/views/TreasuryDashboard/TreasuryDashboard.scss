@@ -64,14 +64,14 @@
     display: none !important;
   }
 
-  .ohm-card {
+  .toc-card {
     max-width: unset !important;
     width: 100%;
     margin: auto;
     .card-header {
       margin-bottom: 1rem;
     }
-    &.ohm-chart-card {
+    &.toc-chart-card {
       .chart-card-header {
         padding: 0px 20px !important;
         min-width: 300px;
@@ -117,7 +117,7 @@
     margin-bottom: 23px;
     padding: 0;
     text-align: center;
-    .ohm-card {
+    .toc-card {
       max-width: unset !important;
       flex-direction: row;
       flex-wrap: wrap;
@@ -184,10 +184,10 @@
     justify-content: space-around;
   }
 
-  .ohm-card {
+  .toc-card {
     width: 97%;
   }
-  .hero-metrics .ohm-card {
+  .hero-metrics .toc-card {
     > .MuiBox-root {
       flex-direction: column;
       align-items: flex-start;
@@ -204,7 +204,7 @@
     justify-content: unset !important;
   }
 
-  .ohm-card {
+  .toc-card {
     & .multifarm-widget-card__header {
       margin-bottom: 1.25rem !important;
     }
@@ -228,7 +228,7 @@
 }
 
 .very-small {
-  .hero-metrics .ohm-card {
+  .hero-metrics .toc-card {
     > .MuiBox-root {
       flex-direction: column;
       justify-content: center;
@@ -270,15 +270,15 @@
   .multifarm-widget-accordion,
   .multifarm-widget-card {
     border: none;
-    border-radius: var(--ohm-card-border-radius);
+    border-radius: var(--toc-card-border-radius);
   }
 
   .multifarm-widget-table-cell:first-child {
-    border-radius: var(--ohm-card-border-radius) 0 0 var(--ohm-card-border-radius);
+    border-radius: var(--toc-card-border-radius) 0 0 var(--toc-card-border-radius);
   }
 
   .multifarm-widget-table-cell:last-child {
-    border-radius: 0 var(--ohm-card-border-radius) var(--ohm-card-border-radius) 0;
+    border-radius: 0 var(--toc-card-border-radius) var(--toc-card-border-radius) 0;
   }
 
   .multifarm-widget-incomes-bar__text span {
@@ -377,15 +377,15 @@
   .multifarm-widget-chart-tooltip__trigger {
     cursor: pointer;
     &:hover {
-      color: var(--ohm-gold);
+      color: var(--toc-gold);
     }
   }
 
   .multifarm-widget-dashboard__tab-container {
     .multifarm-widget-dashboard-tabs__tab[data-active="true"] .multifarm-widget-dashboard-tabs__tab-text {
-      color: var(--ohm-gold);
+      color: var(--toc-gold);
       font-weight: 400;
-      border-color: var(--ohm-gold);
+      border-color: var(--toc-gold);
     }
   }
 }

@@ -83,7 +83,7 @@ function ChooseInverseBond() {
       </Box>
       {/* standard bonds for mobile, desktop is above */}
       {isSmallScreen && (
-        <Box className="ohm-card-container">
+        <Box className="toc-card-container">
           <Grid container item spacing={2}>
             {inverseBonds.map(bond => {
               return (

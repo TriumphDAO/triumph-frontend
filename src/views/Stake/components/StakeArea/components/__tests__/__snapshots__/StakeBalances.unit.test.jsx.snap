@@ -108,7 +108,7 @@ exports[`<StakeBalances/> should render balances and rebase info 1`] = `
                 </div>
                 <p
                   class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
-                  id="sohm-balance"
+                  id="stoc-balance"
                   style="text-align: right;"
                 >
                   12.0000 sOHM

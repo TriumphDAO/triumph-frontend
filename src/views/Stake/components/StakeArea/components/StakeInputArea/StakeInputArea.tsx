@@ -93,13 +93,13 @@ export const StakeInputArea: React.FC<{ isZoomed: boolean }> = props => {
               <>
                 <Trans>First time staking</Trans> <b>OHM</b>?
                 <br />
-                <Trans>Please approve Olympus DAO to use your</Trans> <b>OHM</b> <Trans>for staking</Trans>.
+                <Trans>Please approve Triumph DAO to use your</Trans> <b>OHM</b> <Trans>for staking</Trans>.
               </>
             ) : (
               <>
                 <Trans>First time unstaking</Trans> <b>{fromToken}</b>?
                 <br />
-                <Trans>Please approve Olympus DAO to use your</Trans> <b>{fromToken}</b> <Trans>for unstaking</Trans>.
+                <Trans>Please approve Triumph DAO to use your</Trans> <b>{fromToken}</b> <Trans>for unstaking</Trans>.
               </>
             )
           }
@@ -143,7 +143,7 @@ export const StakeInputArea: React.FC<{ isZoomed: boolean }> = props => {
         </TokenAllowanceGuard>
       </Box>
 
-      <Paper className="ohm-card confirm-dialog">
+      <Paper className="toc-card confirm-dialog">
         <Box display={[null, "flex"]} alignItems="center" justifyContent="space-between">
           <Grid component="label" container alignItems="center" spacing={1} wrap="nowrap">
             <Grid item>sOHM</Grid>
@@ -152,9 +152,9 @@ export const StakeInputArea: React.FC<{ isZoomed: boolean }> = props => {
               <Switch
                 color="primary"
                 disabled={isMutating}
-                className="stake-to-ohm-checkbox"
+                className="stake-to-toc-checkbox"
                 checked={stakedAssetType === "gOHM"}
-                inputProps={{ "aria-label": "stake to gohm" }}
+                inputProps={{ "aria-label": "stake to gtoc" }}
                 onChange={(_, checked) => setStakedAssetType(checked ? "gOHM" : "sOHM")}
               />
             </Grid>

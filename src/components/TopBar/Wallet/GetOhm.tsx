@@ -193,7 +193,7 @@ const GetOhm: FC = () => {
           tokens={["VST"]}
           title={t`Borrow on Vesta Finance`}
           networkName="ARBITRUM"
-          href={`https://vestafinance.xyz/products/gohm`}
+          href={`https://vestafinance.xyz/products/gtoc`}
           external
           disableFlip
         />

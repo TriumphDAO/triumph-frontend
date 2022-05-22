@@ -10,7 +10,7 @@ import { useDynamicStakingContract } from "src/hooks/useContract";
 import { useTestableNetworks } from "src/hooks/useTestableNetworks";
 import { error as createErrorToast, info as createInfoToast } from "src/slices/MessagesSlice";
 
-export const useWrapSohm = () => {
+export const useWrapStoc = () => {
   const dispatch = useDispatch();
   const client = useQueryClient();
   const { address } = useWeb3Context();

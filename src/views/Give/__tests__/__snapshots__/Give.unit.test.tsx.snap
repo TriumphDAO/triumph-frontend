@@ -8,7 +8,7 @@ exports[`<Give/> should render component 1`] = `
     id="give-view"
   >
     <div
-      class="MuiPaper-root makeStyles-root-1 makeStyles-root-2 ohm-card secondary causes-container MuiPaper-elevation0 MuiPaper-rounded"
+      class="MuiPaper-root makeStyles-root-1 makeStyles-root-2 toc-card secondary causes-container MuiPaper-elevation0 MuiPaper-rounded"
       style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
     >
       <div
@@ -105,7 +105,7 @@ exports[`<Give/> should render component 1`] = `
                 id="give-view"
               >
                 <div
-                  class="MuiBox-root MuiBox-root-9 ohm-card secondary causes-container"
+                  class="MuiBox-root MuiBox-root-9 toc-card secondary causes-container"
                   style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
                 >
                   <div
@@ -805,7 +805,7 @@ exports[`<Give/> should render component 1`] = `
       </div>
     </div>
     <div
-      class="MuiPaper-root makeStyles-root-1 makeStyles-root-32 ohm-card secondary MuiPaper-elevation0 MuiPaper-rounded"
+      class="MuiPaper-root makeStyles-root-1 makeStyles-root-32 toc-card secondary MuiPaper-elevation0 MuiPaper-rounded"
       style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
     >
       <div
@@ -898,7 +898,7 @@ exports[`<Give/> should render component 1`] = `
                     class="MuiTypography-root education-message MuiTypography-body2 MuiTypography-alignCenter"
                     style="line-height: 16px;"
                   >
-                    Olympus Give is a means of directing the yield that is accrued on your sOHM to another wallet. The first step is depositing your sOHM and specifying a recipient.
+                    Triumph Give is a means of directing the yield that is accrued on your sOHM to another wallet. The first step is depositing your sOHM and specifying a recipient.
                   </p>
                 </div>
               </div>

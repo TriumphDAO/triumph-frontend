@@ -83,7 +83,7 @@ exports[`<TreasuryDashboard/> should render component 1`] = `
             <span
               class="MuiTab-wrapper"
             >
-              Olympus Pro
+              Triumph Pro
             </span>
           </button>
           <button
@@ -129,7 +129,7 @@ exports[`<TreasuryDashboard/> should render component 1`] = `
               class="MuiBox-root MuiBox-root-8 hero-metrics"
             >
               <div
-                class="MuiPaper-root makeStyles-root-9 makeStyles-root-10 ohm-card MuiPaper-elevation0 MuiPaper-rounded"
+                class="MuiPaper-root makeStyles-root-9 makeStyles-root-10 toc-card MuiPaper-elevation0 MuiPaper-rounded"
                 style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
               >
                 <div
@@ -377,7 +377,7 @@ exports[`<TreasuryDashboard/> should render component 1`] = `
                 class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
               >
                 <div
-                  class="MuiPaper-root makeStyles-root-9 makeStyles-root-26 ohm-card ohm-chart-card MuiPaper-elevation0 MuiPaper-rounded"
+                  class="MuiPaper-root makeStyles-root-9 makeStyles-root-26 toc-card toc-chart-card MuiPaper-elevation0 MuiPaper-rounded"
                   style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
                 >
                   <div
@@ -418,7 +418,7 @@ exports[`<TreasuryDashboard/> should render component 1`] = `
                 class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
               >
                 <div
-                  class="MuiPaper-root makeStyles-root-9 makeStyles-root-28 ohm-card ohm-chart-card MuiPaper-elevation0 MuiPaper-rounded"
+                  class="MuiPaper-root makeStyles-root-9 makeStyles-root-28 toc-card toc-chart-card MuiPaper-elevation0 MuiPaper-rounded"
                   style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
                 >
                   <div
@@ -459,7 +459,7 @@ exports[`<TreasuryDashboard/> should render component 1`] = `
                 class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
               >
                 <div
-                  class="MuiPaper-root makeStyles-root-9 makeStyles-root-30 ohm-card ohm-chart-card MuiPaper-elevation0 MuiPaper-rounded"
+                  class="MuiPaper-root makeStyles-root-9 makeStyles-root-30 toc-card toc-chart-card MuiPaper-elevation0 MuiPaper-rounded"
                   style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
                 >
                   <div
@@ -500,7 +500,7 @@ exports[`<TreasuryDashboard/> should render component 1`] = `
                 class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
               >
                 <div
-                  class="MuiPaper-root makeStyles-root-9 makeStyles-root-32 ohm-card ohm-chart-card MuiPaper-elevation0 MuiPaper-rounded"
+                  class="MuiPaper-root makeStyles-root-9 makeStyles-root-32 toc-card toc-chart-card MuiPaper-elevation0 MuiPaper-rounded"
                   style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
                 >
                   <div
@@ -541,7 +541,7 @@ exports[`<TreasuryDashboard/> should render component 1`] = `
                 class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
               >
                 <div
-                  class="MuiPaper-root makeStyles-root-9 makeStyles-root-34 ohm-card ohm-chart-card MuiPaper-elevation0 MuiPaper-rounded"
+                  class="MuiPaper-root makeStyles-root-9 makeStyles-root-34 toc-card toc-chart-card MuiPaper-elevation0 MuiPaper-rounded"
                   style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
                 >
                   <div
@@ -582,7 +582,7 @@ exports[`<TreasuryDashboard/> should render component 1`] = `
                 class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
               >
                 <div
-                  class="MuiPaper-root makeStyles-root-9 makeStyles-root-36 ohm-card ohm-chart-card MuiPaper-elevation0 MuiPaper-rounded"
+                  class="MuiPaper-root makeStyles-root-9 makeStyles-root-36 toc-card toc-chart-card MuiPaper-elevation0 MuiPaper-rounded"
                   style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
                 >
                   <div

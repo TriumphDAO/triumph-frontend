@@ -16,7 +16,7 @@ exports[`<PoolTogether/> should render component 1`] = `
         />
       </div>
       <div
-        class="MuiPaper-root ohm-card MuiPaper-elevation0 MuiPaper-rounded"
+        class="MuiPaper-root toc-card MuiPaper-elevation0 MuiPaper-rounded"
       >
         <div
           class="MuiBox-root MuiBox-root-4"
@@ -371,7 +371,7 @@ exports[`<PoolTogether/> should render component 1`] = `
                 class="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary"
                 style="text-align: right;"
               >
-                OlympusDAO
+                TriumphDAO
               </p>
             </div>
             <hr

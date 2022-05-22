@@ -21,7 +21,7 @@ const sharedMetricProps: PropsOf<typeof Metric> = { labelVariant: "h6", metricVa
 const MetricsDashboard = () => (
   <>
     <Box className="hero-metrics">
-      <Paper className="ohm-card">
+      <Paper className="toc-card">
         <MetricCollection>
           <MarketCap {...sharedMetricProps} />
           <OHMPrice {...sharedMetricProps} />
@@ -36,32 +36,32 @@ const MetricsDashboard = () => (
     <Zoom in={true}>
       <Grid container spacing={2} className="data-grid">
         <Grid item lg={6} md={6} sm={12} xs={12}>
-          <Paper className="ohm-card ohm-chart-card">
+          <Paper className="toc-card toc-chart-card">
             <TotalValueDepositedGraph />
           </Paper>
         </Grid>
 
         <Grid item lg={6} md={6} sm={12} xs={12}>
-          <Paper className="ohm-card ohm-chart-card">
+          <Paper className="toc-card toc-chart-card">
             <MarketValueGraph />
           </Paper>
         </Grid>
 
         <Grid item lg={6} md={6} sm={12} xs={12}>
-          <Paper className="ohm-card ohm-chart-card">
+          <Paper className="toc-card toc-chart-card">
             <RiskFreeValueGraph />
           </Paper>
         </Grid>
 
         <Grid item lg={6} md={6} sm={12} xs={12}>
-          <Paper className="ohm-card ohm-chart-card">
+          <Paper className="toc-card toc-chart-card">
             <ProtocolOwnedLiquidityGraph />
           </Paper>
         </Grid>
 
         {/*  Temporarily removed until correct data is in the graph */}
         {/* <Grid item lg={6} md={12} sm={12} xs={12}>
-            <Paper className="ohm-card">
+            <Paper className="toc-card">
               <Chart
                 type="bar"
                 data={data}
@@ -85,13 +85,13 @@ const MetricsDashboard = () => (
           </Grid> */}
 
         <Grid item lg={6} md={6} sm={12} xs={12}>
-          <Paper className="ohm-card ohm-chart-card">
+          <Paper className="toc-card toc-chart-card">
             <OHMStakedGraph />
           </Paper>
         </Grid>
 
         <Grid item lg={6} md={6} sm={12} xs={12}>
-          <Paper className="ohm-card ohm-chart-card">
+          <Paper className="toc-card toc-chart-card">
             <RunwayAvailableGraph />
           </Paper>
         </Grid>
@@ -135,7 +135,7 @@ const TreasuryDashboard = memo(() => {
             <Tab aria-label="key-metrics" label="Overview" />
             <Tab aria-label="treasury-allocation" label="Treasury" />
             <Tab aria-label="revenue" label="Revenue" />
-            <Tab aria-label="olympus-pro" label="Olympus Pro" />
+            <Tab aria-label="olympus-pro" label="Triumph Pro" />
             <Tab aria-label="proteus" label="Proteus" />
           </Tabs>
           <Container
