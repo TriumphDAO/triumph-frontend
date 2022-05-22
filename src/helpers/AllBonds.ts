@@ -55,10 +55,12 @@ export const dai = new StableBond({
   },
   networkAddrs: {
     [NetworkId.MAINNET]: {
+      //TODO:Change address
       bondAddress: "0x575409F8d77c12B05feD8B455815f0e54797381c",
       reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
     },
     [NetworkId.TESTNET_RINKEBY]: {
+      //TODO:Change address
       bondAddress: "0xDea5668E815dAF058e3ecB30F645b04ad26374Cf",
       reserveAddress: "0xB2180448f8945C8Cc8AE9809E67D6bd27d8B2f2C",
     },
@@ -100,10 +102,12 @@ export const fraxOld = new StableBond({
   },
   networkAddrs: {
     [NetworkId.MAINNET]: {
+      //TODO:Change address
       bondAddress: "0x8510c8c2B6891E04864fa196693D44E6B6ec2514",
       reserveAddress: "0x853d955acef822db058eb8505911ed77f175b99e",
     },
     [NetworkId.TESTNET_RINKEBY]: {
+      //TODO:Change address
       bondAddress: "0xF651283543fB9D61A91f318b78385d187D300738",
       reserveAddress: "0x2F7249cb599139e560f0c81c269Ab9b04799E453",
     },
@@ -145,10 +149,12 @@ export const frax = new StableBond({
   },
   networkAddrs: {
     [NetworkId.MAINNET]: {
+      //TODO:Change address
       bondAddress: "0xc60a6656e08b62DD2644DC703d7855301363Cc38",
       reserveAddress: "0x853d955acef822db058eb8505911ed77f175b99e",
     },
     [NetworkId.TESTNET_RINKEBY]: {
+      //TODO:Change address
       bondAddress: "0xF651283543fB9D61A91f318b78385d187D300738",
       reserveAddress: "0x2F7249cb599139e560f0c81c269Ab9b04799E453",
     },
@@ -190,10 +196,12 @@ export const lusd = new StableBond({
   },
   networkAddrs: {
     [NetworkId.MAINNET]: {
+      //TODO:Change address
       bondAddress: "0x10C0f93f64e3C8D0a1b0f4B87d6155fd9e89D08D",
       reserveAddress: "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
     },
     [NetworkId.TESTNET_RINKEBY]: {
+      //TODO:Change address
       bondAddress: "0x3aD02C4E4D1234590E87A1f9a73B8E0fd8CF8CCa",
       reserveAddress: "0x45754dF05AA6305114004358eCf8D04FF3B84e26",
     },
@@ -238,10 +246,12 @@ export const eth = new CustomBond({
   },
   networkAddrs: {
     [NetworkId.MAINNET]: {
+      //TODO:Change address
       bondAddress: "0xE6295201CD1ff13CeD5f063a5421c39A1D236F1c",
       reserveAddress: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
     },
     [NetworkId.TESTNET_RINKEBY]: {
+      //TODO:Change address
       bondAddress: "0xca7b90f8158A4FAA606952c023596EE6d322bcf0",
       reserveAddress: "0xc778417e063141139fce010982780140aa0cd5ab",
     },
@@ -295,10 +305,12 @@ export const cvx = new CustomBond({
   },
   networkAddrs: {
     [NetworkId.MAINNET]: {
+      //TODO:Change address
       bondAddress: "0x767e3459A35419122e5F6274fB1223d75881E0a9",
       reserveAddress: "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
     },
     [NetworkId.TESTNET_RINKEBY]: {
+      //TODO:Change address
       bondAddress: "0xd43940687f6e76056789d00c43A40939b7a559b5",
       reserveAddress: "0xB2180448f8945C8Cc8AE9809E67D6bd27d8B2f2C", // using DAI per `principal` address
       // reserveAddress: "0x6761Cb314E39082e08e1e697eEa23B6D1A77A34b", // guessed
@@ -352,10 +364,12 @@ export const cvx_expired = new CustomBond({
   },
   networkAddrs: {
     [NetworkId.MAINNET]: {
+      //TODO:Change address
       bondAddress: "0x6754c69fe02178f54ADa19Ebf1C5569826021920",
       reserveAddress: "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
     },
     [NetworkId.TESTNET_RINKEBY]: {
+      //TODO:Change address
       bondAddress: "0xd43940687f6e76056789d00c43A40939b7a559b5",
       reserveAddress: "0xB2180448f8945C8Cc8AE9809E67D6bd27d8B2f2C", // using DAI per `principal` address
       // reserveAddress: "0x6761Cb314E39082e08e1e697eEa23B6D1A77A34b", // guessed
@@ -406,15 +420,18 @@ export const ohm_dai = new LPBond({
   },
   networkAddrs: {
     [NetworkId.MAINNET]: {
+      //TODO:Change address
       // TODO: add correct bond address when it's created
       bondAddress: "0x956c43998316b6a2F21f89a1539f73fB5B78c151",
       reserveAddress: "0x055475920a8c93CfFb64d039A8205F7AcC7722d3",
     },
     [NetworkId.TESTNET_RINKEBY]: {
+      //TODO:Change address
       bondAddress: "0xcF449dA417cC36009a1C6FbA78918c31594B9377",
       reserveAddress: "0x8D5a22Fb6A1840da602E56D1a260E56770e0bCE2",
     },
   },
+  //TODO:Change address
   lpUrl:
     "https://app.sushi.com/add/0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5/0x6b175474e89094c44da98b954eedeac495271d0f",
 });
@@ -455,14 +472,17 @@ export const ohm_daiOld = new LPBond({
   },
   networkAddrs: {
     [NetworkId.MAINNET]: {
+      //TODO:Change address
       bondAddress: "0x956c43998316b6a2F21f89a1539f73fB5B78c151",
       reserveAddress: "0x34d7d7Aaf50AD4944B70B320aCB24C95fa2def7c",
     },
     [NetworkId.TESTNET_RINKEBY]: {
+      //TODO:Change address
       bondAddress: "0xcF449dA417cC36009a1C6FbA78918c31594B9377",
       reserveAddress: "0x8D5a22Fb6A1840da602E56D1a260E56770e0bCE2",
     },
   },
+  //TODO:Change address
   lpUrl:
     "https://app.sushi.com/add/0x383518188c0c6d7730d91b2c03a03c837814a899/0x6b175474e89094c44da98b954eedeac495271d0f",
 });
@@ -503,14 +523,17 @@ export const ohm_frax = new LPBond({
   },
   networkAddrs: {
     [NetworkId.MAINNET]: {
+      //TODO:Change address
       bondAddress: "0x99E9b0a9dC965361C2CBc07525EA591761aEaA53",
       reserveAddress: "0xB612c37688861f1f90761DC7F382C2aF3a50Cc39",
     },
     [NetworkId.TESTNET_RINKEBY]: {
+      //TODO:Change address
       bondAddress: "0x7BB53Ef5088AEF2Bb073D9C01DCa3a1D484FD1d2",
       reserveAddress: "0x11BE404d7853BDE29A3e73237c952EcDCbBA031E",
     },
   },
+  //TODO:Change address
   lpUrl:
     "https://app.uniswap.org/#/add/v2/0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5/0x853d955acef822db058eb8505911ed77f175b99e",
 });
@@ -551,14 +574,17 @@ export const ohm_fraxOld = new LPBond({
   },
   networkAddrs: {
     [NetworkId.MAINNET]: {
+      //TODO:Change address
       bondAddress: "0xc20CffF07076858a7e642E396180EC390E5A02f7",
       reserveAddress: "0x2dce0dda1c2f98e0f171de8333c3c6fe1bbf4877",
     },
     [NetworkId.TESTNET_RINKEBY]: {
+      //TODO:Change address
       bondAddress: "0x7BB53Ef5088AEF2Bb073D9C01DCa3a1D484FD1d2",
       reserveAddress: "0x11BE404d7853BDE29A3e73237c952EcDCbBA031E",
     },
   },
+  //TODO:Change address
   lpUrl:
     "https://app.uniswap.org/#/add/v2/0x853d955acef822db058eb8505911ed77f175b99e/0x383518188c0c6d7730d91b2c03a03c837814a899",
 });
@@ -599,15 +625,18 @@ export const ohm_lusd = new LPBond({
   },
   networkAddrs: {
     [NetworkId.MAINNET]: {
+      //TODO:Change address
       bondAddress: "0xFB1776299E7804DD8016303Df9c07a65c80F67b6",
       reserveAddress: "0xfDf12D1F85b5082877A6E070524f50F6c84FAa6b",
     },
     [NetworkId.TESTNET_RINKEBY]: {
+      //TODO:Change address
       // NOTE (appleseed-lusd): using ohm-dai rinkeby contracts
       bondAddress: "0xcF449dA417cC36009a1C6FbA78918c31594B9377",
       reserveAddress: "0x8D5a22Fb6A1840da602E56D1a260E56770e0bCE2",
     },
   },
+  //TODO:Change address
   lpUrl:
     "https://app.sushi.com/add/0x383518188C0C6d7730D91b2c03a03C837814a899/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
 });
@@ -648,17 +677,20 @@ export const ohm_weth = new CustomBond({
   },
   networkAddrs: {
     [NetworkId.MAINNET]: {
+      //TODO:Change address
       // TODO (appleseed): need new bond address
       bondAddress: "0xB6C9dc843dEc44Aa305217c2BbC58B44438B6E16",
       reserveAddress: "0x69b81152c5A8d35A67B32A4D3772795d96CaE4da",
     },
     [NetworkId.TESTNET_RINKEBY]: {
+      //TODO:Change address
       // NOTE (unbanksy): using ohm-dai rinkeby contracts
       bondAddress: "0xcF449dA417cC36009a1C6FbA78918c31594B9377",
       reserveAddress: "0x8D5a22Fb6A1840da602E56D1a260E56770e0bCE2",
     },
   },
   bondType: BondType.LP,
+  //TODO:Change address
   lpUrl:
     "https://app.sushi.com/add/0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
   customTreasuryBalanceFunc: async function (this: CustomBond, networkId, provider) {
@@ -726,16 +758,19 @@ export const ohm_wethOld = new CustomBond({
   },
   networkAddrs: {
     [NetworkId.MAINNET]: {
+      //TODO:Change address
       bondAddress: "0xB6C9dc843dEc44Aa305217c2BbC58B44438B6E16",
       reserveAddress: "0xfffae4a0f4ac251f4705717cd24cadccc9f33e06",
     },
     [NetworkId.TESTNET_RINKEBY]: {
+      //TODO:Change address
       // NOTE (unbanksy): using ohm-dai rinkeby contracts
       bondAddress: "0xcF449dA417cC36009a1C6FbA78918c31594B9377",
       reserveAddress: "0x8D5a22Fb6A1840da602E56D1a260E56770e0bCE2",
     },
   },
   bondType: BondType.LP,
+  //TODO:Change address
   lpUrl:
     "https://app.sushi.com/add/0x383518188c0c6d7730d91b2c03a03c837814a899/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
   customTreasuryBalanceFunc: async function (this: CustomBond, networkId, provider) {
