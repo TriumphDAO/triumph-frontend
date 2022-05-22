@@ -2,7 +2,7 @@ import { t } from "@lingui/macro";
 import { Metric } from "@olympusdao/component-library";
 import { formatCurrency, formatNumber } from "src/helpers";
 import { useCurrentIndex } from "src/hooks/useCurrentIndex";
-import { useGohmPrice, useOhmPrice } from "src/hooks/usePrices";
+import { useGtocPrice, useOhmPrice } from "src/hooks/usePrices";
 import {
   useMarketCap,
   useOhmCirculatingSupply,
@@ -30,28 +30,28 @@ export const MarketCap: React.FC<AbstractedMetricProps> = props => {
 };
 
 export const OHMPrice: React.FC<AbstractedMetricProps> = props => {
-  const { data: ohmPrice } = useOhmPrice();
+  const { data: tocPrice } = useOhmPrice();
 
   const _props: MetricProps = {
     ...props,
     label: "OHM " + t`Price`,
   };
 
-  if (ohmPrice) _props.metric = formatCurrency(ohmPrice, 2);
+  if (tocPrice) _props.metric = formatCurrency(tocPrice, 2);
   else _props.isLoading = true;
 
   return <Metric {..._props} />;
 };
 
 export const SOHMPrice: React.FC<AbstractedMetricProps> = props => {
-  const { data: ohmPrice } = useOhmPrice();
+  const { data: tocPrice } = useOhmPrice();
 
   const _props: MetricProps = {
     ...props,
     label: "sOHM " + t`Price`,
   };
 
-  if (ohmPrice) _props.metric = formatCurrency(ohmPrice, 2);
+  if (tocPrice) _props.metric = formatCurrency(tocPrice, 2);
   else _props.isLoading = true;
 
   return <Metric {..._props} />;
@@ -105,7 +105,7 @@ export const CurrentIndex: React.FC<AbstractedMetricProps> = props => {
 };
 
 export const GOHMPrice: React.FC<AbstractedMetricProps> = props => {
-  const { data: gOhmPrice } = useGohmPrice();
+  const { data: gOhmPrice } = useGtocPrice();
 
   const _props: MetricProps = {
     ...props,

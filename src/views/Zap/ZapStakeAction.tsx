@@ -127,18 +127,18 @@ const ZapStakeAction: React.FC = () => {
     });
   };
 
-  const ohmMarketPrice = useAppSelector(state => state.app.marketPrice || 0);
+  const tocMarketPrice = useAppSelector(state => state.app.marketPrice || 0);
 
-  const sOhmBalance = useAppSelector(state => Number(state.account?.balances?.sohm ?? 0.0));
-  const gOhmBalance = useAppSelector(state => Number(state.account?.balances?.gohm ?? 0.0));
+  const sOhmBalance = useAppSelector(state => Number(state.account?.balances?.stoc ?? 0.0));
+  const gOhmBalance = useAppSelector(state => Number(state.account?.balances?.gtoc ?? 0.0));
   const currentIndex = Number(useCurrentIndex().data?.toBigNumber().div(1e9));
 
   const exchangeRate = useMemo(
     () =>
       zapToken && outputToken != null
         ? outputToken
-          ? (ohmMarketPrice * currentIndex) / tokens[zapToken]?.price
-          : ohmMarketPrice / tokens[zapToken]?.price
+          ? (tocMarketPrice * currentIndex) / tokens[zapToken]?.price
+          : tocMarketPrice / tokens[zapToken]?.price
         : Number.MAX_VALUE,
     [zapToken, outputToken],
   );
@@ -173,7 +173,7 @@ const ZapStakeAction: React.FC = () => {
   const inputTokenImages = useMemo(
     () =>
       Object.entries(tokens)
-        .filter(token => token[0] !== "sohm" && !token[1].hide)
+        .filter(token => token[0] !== "stoc" && !token[1].hide)
         .sort((tokenA, tokenB) => tokenB[1].balanceUSD - tokenA[1].balanceUSD)
         .map(token => token[1].tokenImageUrl)
         .slice(0, 3),

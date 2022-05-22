@@ -37,7 +37,7 @@ export function WalletGraphic({ quantity, verb = "retained" }: EducationGraphicP
   );
 }
 
-export function DepositSohm({ message }: GenericEducationGraphicProps) {
+export function DepositStoc({ message }: GenericEducationGraphicProps) {
   return (
     <Box display="flex" flexDirection="column" className="sect" style={{ marginBottom: "16px" }}>
       <Box className="graphic">
@@ -70,7 +70,7 @@ export function DepositSohm({ message }: GenericEducationGraphicProps) {
         </Typography>
         <Typography variant="body2" align="center" className="education-message" style={{ lineHeight: "16px" }}>
           <Trans>
-            Olympus Give is a means of directing the yield that is accrued on your sOHM to another wallet. The first
+            Triumph Give is a means of directing the yield that is accrued on your sOHM to another wallet. The first
             step is depositing your sOHM and specifying a recipient.
           </Trans>
         </Typography>

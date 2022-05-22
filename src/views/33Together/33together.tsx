@@ -52,8 +52,8 @@ const PoolTogether = () => {
   ]);
   const isAccountLoading = useAppSelector(state => state.account.loading ?? true);
 
-  const sohmBalance = useAppSelector(state => {
-    return state.account.balances && state.account.balances.sohmV1;
+  const stocBalance = useAppSelector(state => {
+    return state.account.balances && state.account.balances.stocV1;
   });
 
   const poolBalance = useAppSelector(state => {
@@ -187,7 +187,7 @@ const PoolTogether = () => {
         graphLoading={graphLoading}
         isAccountLoading={isAccountLoading}
         poolBalance={trimOdds(parseFloat(poolBalance))}
-        sohmBalance={trimOdds(parseFloat(sohmBalance))}
+        stocBalance={trimOdds(parseFloat(stocBalance))}
         yourTotalAwards={trimOdds(yourTotalAwards)}
         yourOdds={trimOdds(yourOdds)}
         winners={winners}

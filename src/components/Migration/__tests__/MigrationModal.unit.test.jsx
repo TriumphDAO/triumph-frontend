@@ -19,19 +19,19 @@ describe("<MigrationModal/>", () => {
   });
 
   it("should render user account v1 assets and estimated v2 amounts", async () => {
-    // preload user account with v1 ohm, sohm and wsohm tokens
+    // preload user account with v1 toc, stoc and wstoc tokens
     // and test migration flow
     const preloadedState = {
       account: {
         balances: {
-          ohmV1: 11,
-          sohmV1: 12,
-          wsohm: 13,
+          tocV1: 11,
+          stocV1: 12,
+          wstoc: 13,
         },
         migration: {
-          ohm: 0,
-          sohm: 0,
-          wsohm: 0,
+          toc: 0,
+          stoc: 0,
+          wstoc: 0,
         },
       },
       app: {
@@ -70,9 +70,9 @@ describe("<MigrationModal/>", () => {
 
     // verify that the dialog displays the correct conversion formula
     // prevent regression for bug report:
-    // https://github.com/OlympusDAO/olympus-frontend/issues/1394
+    // https://github.com/TriumphDAO/olympus-frontend/issues/1394
     const sOHMv2Value =
-      (preloadedState.account.balances.sohmV1 * preloadedState.app.currentIndex) / preloadedState.app.currentIndexV1;
+      (preloadedState.account.balances.stocV1 * preloadedState.app.currentIndex) / preloadedState.app.currentIndexV1;
     const trimmed = trim(sOHMv2Value, 4);
     expect(await screen.getByText(`${trimmed} sOHM (v2)`)).toBeInTheDocument();
 

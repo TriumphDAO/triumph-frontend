@@ -65,9 +65,9 @@ export const DepositTableRow = ({ depositObject }: DepositRowProps) => {
 
     if (depositAmountDiff.isEqualTo(new BigNumber(0))) return;
 
-    // If on Rinkeby and using Mock Sohm, use changeMockGive async thunk
+    // If on Rinkeby and using Mock Stoc, use changeMockGive async thunk
     // Else use standard call
-    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)) {
+    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)) {
       await dispatch(
         changeMockGive({
           action: ACTION_GIVE_EDIT,
@@ -100,11 +100,11 @@ export const DepositTableRow = ({ depositObject }: DepositRowProps) => {
     setIsManageModalOpen(false);
   };
 
-  // If on Rinkeby and using Mock Sohm, use changeMockGive async thunk
+  // If on Rinkeby and using Mock Stoc, use changeMockGive async thunk
   // Else use standard call
   const handleWithdrawModalSubmit: WithdrawSubmitCallback = async (walletAddress, eventSource, depositAmount) => {
     // Issue withdrawal from smart contract
-    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)) {
+    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)) {
       await dispatch(
         changeMockGive({
           action: ACTION_GIVE_WITHDRAW,

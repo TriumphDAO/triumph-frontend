@@ -85,7 +85,7 @@ export function RedeemYieldModal({ isModalOpen, callbackFunc, cancelFunc, redeem
             </div>
           </div>
         </Box>
-        <FormControl className="ohm-modal-submit">
+        <FormControl className="toc-modal-submit">
           <PrimaryButton disabled={!canSubmit()} onClick={() => handleSubmit()}>
             {txnButtonText(pendingTransactions, "redeeming", t`Confirm ${redeemableBalance.toFixed(2)} sOHM`)}
           </PrimaryButton>

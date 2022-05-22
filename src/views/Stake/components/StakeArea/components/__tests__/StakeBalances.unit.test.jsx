@@ -1,12 +1,12 @@
 import { DecimalBigNumber } from "src/helpers/DecimalBigNumber/DecimalBigNumber";
 import {
   useFuseBalance,
-  useGohmBalance,
-  useGohmTokemakBalance,
+  useGtocBalance,
+  useGtocTokemakBalance,
   useOhmBalance,
-  useSohmBalance,
-  useV1SohmBalance,
-  useWsohmBalance,
+  useStocBalance,
+  useV1StocBalance,
+  useWstocBalance,
 } from "src/hooks/useBalance";
 import { useCurrentIndex } from "src/hooks/useCurrentIndex";
 import { NetworkId } from "src/networkDetails";
@@ -26,12 +26,12 @@ describe("<StakeBalances/>", () => {
       bals[NetworkId.MAINNET] = { data: new DecimalBigNumber("11", 18) };
       return bals;
     });
-    useSohmBalance.mockImplementation(function () {
+    useStocBalance.mockImplementation(function () {
       const bals = {};
       bals[NetworkId.MAINNET] = { data: new DecimalBigNumber("12", 18) };
       return bals;
     });
-    useGohmBalance.mockImplementation(function () {
+    useGtocBalance.mockImplementation(function () {
       const bals = {};
       bals[NetworkId.MAINNET] = { data: new DecimalBigNumber("131", 18) };
       bals[NetworkId.ARBITRUM] = { data: new DecimalBigNumber("132", 18) };
@@ -41,7 +41,7 @@ describe("<StakeBalances/>", () => {
       bals[NetworkId.OPTIMISM] = { data: new DecimalBigNumber("136", 18) };
       return bals;
     });
-    useGohmTokemakBalance.mockImplementation(function () {
+    useGtocTokemakBalance.mockImplementation(function () {
       const bals = {};
       bals[NetworkId.MAINNET] = { data: new DecimalBigNumber("14", 18) };
       return bals;
@@ -51,12 +51,12 @@ describe("<StakeBalances/>", () => {
       bals[NetworkId.MAINNET] = { data: new DecimalBigNumber("15", 18) };
       return bals;
     });
-    useV1SohmBalance.mockImplementation(function () {
+    useV1StocBalance.mockImplementation(function () {
       const bals = {};
       bals[NetworkId.MAINNET] = { data: new DecimalBigNumber("16", 18) };
       return bals;
     });
-    useWsohmBalance.mockImplementation(function () {
+    useWstocBalance.mockImplementation(function () {
       const bals = {};
       bals[NetworkId.MAINNET] = { data: new DecimalBigNumber("171", 18) };
       bals[NetworkId.ARBITRUM] = { data: new DecimalBigNumber("172", 18) };

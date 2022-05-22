@@ -7,12 +7,12 @@ import { DecimalBigNumber } from "src/helpers/DecimalBigNumber/DecimalBigNumber"
 import { nonNullable } from "src/helpers/types/nonNullable";
 import {
   useFuseBalance,
-  useGohmBalance,
-  useGohmTokemakBalance,
+  useGtocBalance,
+  useGtocTokemakBalance,
   useOhmBalance,
-  useSohmBalance,
-  useV1SohmBalance,
-  useWsohmBalance,
+  useStocBalance,
+  useV1StocBalance,
+  useWstocBalance,
 } from "src/hooks/useBalance";
 import { useCurrentIndex } from "src/hooks/useCurrentIndex";
 import { useTestableNetworks } from "src/hooks/useTestableNetworks";
@@ -28,50 +28,50 @@ export const StakeBalances = () => {
   const networks = useTestableNetworks();
   const { data: currentIndex } = useCurrentIndex();
 
-  const gohmBalances = useGohmBalance();
-  const wsohmBalances = useWsohmBalance();
+  const gtocBalances = useGtocBalance();
+  const wstocBalances = useWstocBalance();
 
-  const ohmBalance = useOhmBalance()[networks.MAINNET].data;
-  const sohmBalance = useSohmBalance()[networks.MAINNET].data;
-  const v1sohmBalance = useV1SohmBalance()[networks.MAINNET].data;
-  const gohmFuseBalance = useFuseBalance()[NetworkId.MAINNET].data;
-  const gohmTokemakBalance = useGohmTokemakBalance()[NetworkId.MAINNET].data;
+  const tocBalance = useOhmBalance()[networks.MAINNET].data;
+  const stocBalance = useStocBalance()[networks.MAINNET].data;
+  const v1stocBalance = useV1StocBalance()[networks.MAINNET].data;
+  const gtocFuseBalance = useFuseBalance()[NetworkId.MAINNET].data;
+  const gtocTokemakBalance = useGtocTokemakBalance()[NetworkId.MAINNET].data;
 
-  const sohmTokens = [sohmBalance, v1sohmBalance];
+  const stocTokens = [stocBalance, v1stocBalance];
 
-  const gohmTokens = [
-    gohmFuseBalance,
-    gohmTokemakBalance,
-    gohmBalances[networks.MAINNET].data,
-    gohmBalances[networks.ARBITRUM].data,
-    gohmBalances[networks.AVALANCHE].data,
-    gohmBalances[NetworkId.POLYGON].data,
-    gohmBalances[NetworkId.FANTOM].data,
-    wsohmBalances[networks.MAINNET].data,
-    wsohmBalances[networks.ARBITRUM].data,
-    wsohmBalances[networks.AVALANCHE].data,
-    gohmBalances[NetworkId.OPTIMISM].data,
+  const gtocTokens = [
+    gtocFuseBalance,
+    gtocTokemakBalance,
+    gtocBalances[networks.MAINNET].data,
+    gtocBalances[networks.ARBITRUM].data,
+    gtocBalances[networks.AVALANCHE].data,
+    gtocBalances[NetworkId.POLYGON].data,
+    gtocBalances[NetworkId.FANTOM].data,
+    wstocBalances[networks.MAINNET].data,
+    wstocBalances[networks.ARBITRUM].data,
+    wstocBalances[networks.AVALANCHE].data,
+    gtocBalances[NetworkId.OPTIMISM].data,
   ];
 
-  const totalSohmBalance = sohmTokens
+  const totalStocBalance = stocTokens
     .filter(nonNullable)
     .reduce((res, bal) => res.add(bal), new DecimalBigNumber("0", 9));
 
-  const totalGohmBalance = gohmTokens
+  const totalGtocBalance = gtocTokens
     .filter(nonNullable)
     .reduce((res, bal) => res.add(bal), new DecimalBigNumber("0", 18));
 
-  const totalStakedBalance = currentIndex && formatBalance(totalGohmBalance.mul(currentIndex, 9).add(totalSohmBalance));
+  const totalStakedBalance = currentIndex && formatBalance(totalGtocBalance.mul(currentIndex, 9).add(totalStocBalance));
 
-  const allBalancesLoaded = sohmTokens.every(Boolean) && gohmTokens.every(Boolean);
+  const allBalancesLoaded = stocTokens.every(Boolean) && gtocTokens.every(Boolean);
 
   return (
     <>
       <DataRow
         id="user-balance"
         title={t`Unstaked Balance`}
-        isLoading={!ohmBalance}
-        balance={`${formatBalance(ohmBalance)} OHM`}
+        isLoading={!tocBalance}
+        balance={`${formatBalance(tocBalance)} OHM`}
       />
 
       <Accordion className="stake-accordion" square defaultExpanded>
@@ -88,114 +88,114 @@ export const StakeBalances = () => {
           <DataRow
             indented
             title={t`sOHM`}
-            id="sohm-balance"
-            isLoading={!sohmBalance}
-            balance={`${formatBalance(sohmBalance)} sOHM`}
+            id="stoc-balance"
+            isLoading={!stocBalance}
+            balance={`${formatBalance(stocBalance)} sOHM`}
           />
 
           <DataRow
             indented
             title={t`gOHM`}
-            isLoading={!gohmBalances[networks.MAINNET].data}
-            balance={`${formatBalance(gohmBalances[networks.MAINNET].data)} gOHM`}
+            isLoading={!gtocBalances[networks.MAINNET].data}
+            balance={`${formatBalance(gtocBalances[networks.MAINNET].data)} gOHM`}
           />
 
-          {hasVisibleBalance(gohmBalances[NetworkId.ARBITRUM].data) && (
+          {hasVisibleBalance(gtocBalances[NetworkId.ARBITRUM].data) && (
             <DataRow
               indented
               title={t`gOHM (Arbitrum)`}
-              isLoading={!gohmBalances[NetworkId.ARBITRUM].data}
-              balance={`${formatBalance(gohmBalances[NetworkId.ARBITRUM].data)} gOHM`}
+              isLoading={!gtocBalances[NetworkId.ARBITRUM].data}
+              balance={`${formatBalance(gtocBalances[NetworkId.ARBITRUM].data)} gOHM`}
             />
           )}
 
-          {hasVisibleBalance(gohmBalances[NetworkId.AVALANCHE].data) && (
+          {hasVisibleBalance(gtocBalances[NetworkId.AVALANCHE].data) && (
             <DataRow
               indented
               title={t`gOHM (Avalanche)`}
-              isLoading={!gohmBalances[NetworkId.AVALANCHE].data}
-              balance={`${formatBalance(gohmBalances[NetworkId.AVALANCHE].data)} gOHM`}
+              isLoading={!gtocBalances[NetworkId.AVALANCHE].data}
+              balance={`${formatBalance(gtocBalances[NetworkId.AVALANCHE].data)} gOHM`}
             />
           )}
 
-          {hasVisibleBalance(gohmBalances[NetworkId.POLYGON].data) && (
+          {hasVisibleBalance(gtocBalances[NetworkId.POLYGON].data) && (
             <DataRow
               indented
               title={t`gOHM (Polygon)`}
-              isLoading={!gohmBalances[NetworkId.POLYGON].data}
-              balance={`${formatBalance(gohmBalances[NetworkId.POLYGON].data)} gOHM`}
+              isLoading={!gtocBalances[NetworkId.POLYGON].data}
+              balance={`${formatBalance(gtocBalances[NetworkId.POLYGON].data)} gOHM`}
             />
           )}
 
-          {hasVisibleBalance(gohmBalances[NetworkId.FANTOM].data) && (
+          {hasVisibleBalance(gtocBalances[NetworkId.FANTOM].data) && (
             <DataRow
               indented
               title={t`gOHM (Fantom)`}
-              isLoading={!gohmBalances[NetworkId.FANTOM].data}
-              balance={`${formatBalance(gohmBalances[NetworkId.FANTOM].data)} gOHM`}
+              isLoading={!gtocBalances[NetworkId.FANTOM].data}
+              balance={`${formatBalance(gtocBalances[NetworkId.FANTOM].data)} gOHM`}
             />
           )}
 
-          {hasVisibleBalance(gohmBalances[NetworkId.OPTIMISM].data) && (
+          {hasVisibleBalance(gtocBalances[NetworkId.OPTIMISM].data) && (
             <DataRow
               indented
               title={t`gOHM (Optimism)`}
-              isLoading={!gohmBalances[NetworkId.OPTIMISM].data}
-              balance={`${formatBalance(gohmBalances[NetworkId.OPTIMISM].data)} gOHM`}
+              isLoading={!gtocBalances[NetworkId.OPTIMISM].data}
+              balance={`${formatBalance(gtocBalances[NetworkId.OPTIMISM].data)} gOHM`}
             />
           )}
 
-          {hasVisibleBalance(gohmTokemakBalance) && (
+          {hasVisibleBalance(gtocTokemakBalance) && (
             <DataRow
               indented
               title={t`gOHM (Tokemak)`}
-              isLoading={!gohmTokemakBalance}
-              balance={`${formatBalance(gohmTokemakBalance)} gOHM`}
+              isLoading={!gtocTokemakBalance}
+              balance={`${formatBalance(gtocTokemakBalance)} gOHM`}
             />
           )}
 
-          {hasVisibleBalance(gohmFuseBalance) && (
+          {hasVisibleBalance(gtocFuseBalance) && (
             <DataRow
               indented
               title={t`gOHM (Fuse)`}
-              isLoading={!gohmFuseBalance}
-              balance={`${formatBalance(gohmFuseBalance)} gOHM`}
+              isLoading={!gtocFuseBalance}
+              balance={`${formatBalance(gtocFuseBalance)} gOHM`}
             />
           )}
 
-          {hasVisibleBalance(v1sohmBalance) && (
+          {hasVisibleBalance(v1stocBalance) && (
             <DataRow
               indented
               title={t`sOHM (v1)`}
-              isLoading={!v1sohmBalance}
-              balance={`${formatBalance(v1sohmBalance)} sOHM`}
+              isLoading={!v1stocBalance}
+              balance={`${formatBalance(v1stocBalance)} sOHM`}
             />
           )}
 
-          {hasVisibleBalance(wsohmBalances[networks.MAINNET].data) && (
+          {hasVisibleBalance(wstocBalances[networks.MAINNET].data) && (
             <DataRow
               indented
               title={t`wsOHM`}
-              isLoading={!wsohmBalances[networks.MAINNET].data}
-              balance={`${formatBalance(wsohmBalances[networks.MAINNET].data)} wsOHM`}
+              isLoading={!wstocBalances[networks.MAINNET].data}
+              balance={`${formatBalance(wstocBalances[networks.MAINNET].data)} wsOHM`}
             />
           )}
 
-          {hasVisibleBalance(wsohmBalances[NetworkId.ARBITRUM].data) && (
+          {hasVisibleBalance(wstocBalances[NetworkId.ARBITRUM].data) && (
             <DataRow
               indented
               title={t`wsOHM (Arbitrum)`}
-              isLoading={!wsohmBalances[NetworkId.ARBITRUM].data}
-              balance={`${formatBalance(wsohmBalances[NetworkId.ARBITRUM].data)} wsOHM`}
+              isLoading={!wstocBalances[NetworkId.ARBITRUM].data}
+              balance={`${formatBalance(wstocBalances[NetworkId.ARBITRUM].data)} wsOHM`}
             />
           )}
 
-          {hasVisibleBalance(wsohmBalances[NetworkId.AVALANCHE].data) && (
+          {hasVisibleBalance(wstocBalances[NetworkId.AVALANCHE].data) && (
             <DataRow
               indented
               title={t`wsOHM (Avalanche)`}
-              isLoading={!wsohmBalances[NetworkId.AVALANCHE].data}
-              balance={`${formatBalance(wsohmBalances[NetworkId.AVALANCHE].data)} wsOHM`}
+              isLoading={!wstocBalances[NetworkId.AVALANCHE].data}
+              balance={`${formatBalance(wstocBalances[NetworkId.AVALANCHE].data)} wsOHM`}
             />
           )}
         </AccordionDetails>

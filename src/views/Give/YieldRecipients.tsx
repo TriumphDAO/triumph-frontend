@@ -34,7 +34,7 @@ export default function YieldRecipients({ changeView }: RecipientModalProps) {
 
   const isAppLoading = useSelector((state: DonationInfoState) => state.app.loading);
   const donationInfo = useSelector((state: DonationInfoState) => {
-    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)
+    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)
       ? state.account.mockGiving && state.account.mockGiving.donationInfo
       : state.account.giving && state.account.giving.donationInfo;
   });

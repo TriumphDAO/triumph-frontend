@@ -50,10 +50,10 @@ const Wrap: React.FC = () => {
 const GOHMExternalLink = () => (
   <Link
     target="_blank"
-    aria-label="wsohm-wut"
-    className="migrate-sohm-button"
+    aria-label="wstoc-wut"
+    className="migrate-stoc-button"
     style={{ textDecoration: "none" }}
-    href="https://docs.olympusdao.finance/main/contracts/tokens#gohm"
+    href="https://docs.olympusdao.finance/main/contracts/tokens#gtoc"
   >
     <Typography>gOHM</Typography> <Icon style={{ marginLeft: "5px" }} name="arrow-up" />
   </Link>

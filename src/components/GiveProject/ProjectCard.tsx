@@ -23,7 +23,7 @@ import Countdown from "react-countdown";
 import ReactGA from "react-ga";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { ReactComponent as GiveSohm } from "src/assets/icons/give_sohm.svg";
+import { ReactComponent as GiveStoc } from "src/assets/icons/give_stoc.svg";
 import { NetworkId } from "src/constants";
 import { Environment } from "src/helpers/environment/Environment/Environment";
 import { getTotalDonated } from "src/helpers/GetTotalDonated";
@@ -100,7 +100,7 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
   const [isManageModalOpen, setIsManageModalOpen] = useState(false);
 
   const donationInfo = useSelector((state: State) => {
-    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)
+    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)
       ? state.account.mockGiving && state.account.mockGiving.donationInfo
       : state.account.giving && state.account.giving.donationInfo;
   });
@@ -280,7 +280,7 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
         <Grid container className="project-goal">
           <Grid item xs={5} className="project-donated">
             <div className="project-donated-icon">
-              <SvgIcon component={GiveSohm} style={{ marginRight: "0.33rem" }} />
+              <SvgIcon component={GiveStoc} style={{ marginRight: "0.33rem" }} />
               <Typography variant="h6">
                 <strong>{recipientInfoIsLoading ? <Skeleton /> : formattedTotalDonated}</strong>
               </Typography>
@@ -325,7 +325,7 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
           <Grid item xs={2} />
           <Grid item xs={5} className="project-deposits">
             <div className="project-data-icon">
-              <SvgIcon component={GiveSohm} style={{ marginRight: "0.33rem" }} />
+              <SvgIcon component={GiveStoc} style={{ marginRight: "0.33rem" }} />
               <Typography variant="h6">
                 {recipientInfoIsLoading ? <Skeleton /> : <strong>{parseFloat(totalDebt).toFixed(2)}</strong>}
               </Typography>
@@ -375,9 +375,9 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
       return dispatch(error(t`Please enter a value!`));
     }
 
-    // If on Rinkeby and using Mock Sohm, use changeMockGive async thunk
+    // If on Rinkeby and using Mock Stoc, use changeMockGive async thunk
     // Else use standard call
-    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)) {
+    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)) {
       await dispatch(
         changeMockGive({
           action: ACTION_GIVE,
@@ -426,9 +426,9 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
 
     if (depositAmountDiff.isEqualTo(new BigNumber(0))) return;
 
-    // If on Rinkeby and using Mock Sohm, use changeMockGive async thunk
+    // If on Rinkeby and using Mock Stoc, use changeMockGive async thunk
     // Else use standard call
-    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)) {
+    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)) {
       await dispatch(
         changeMockGive({
           action: ACTION_GIVE_EDIT,
@@ -462,9 +462,9 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
   };
 
   const handleWithdrawModalSubmit: WithdrawSubmitCallback = async (walletAddress, eventSource, depositAmount) => {
-    // If on Rinkeby and using Mock Sohm, use changeMockGive async thunk
+    // If on Rinkeby and using Mock Stoc, use changeMockGive async thunk
     // Else use standard call
-    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)) {
+    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)) {
       await dispatch(
         changeMockGive({
           action: ACTION_GIVE_WITHDRAW,
@@ -520,7 +520,7 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
    */
   const handleProjectDetailsButtonClick = (source: string) => {
     ReactGA.event({
-      category: "Olympus Give",
+      category: "Triumph Give",
       action: "View Project",
       label: title,
       dimension1: address ?? "unknown",
@@ -724,7 +724,7 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
                         <Grid container className="project-donation-data">
                           <Grid item className="project-deposited">
                             <Typography variant="h6">
-                              <SvgIcon component={GiveSohm} style={{ marginRight: "0.33rem" }} />
+                              <SvgIcon component={GiveStoc} style={{ marginRight: "0.33rem" }} />
                               <strong>{parseFloat(donationInfo[donationId].deposit).toFixed(2)}</strong>
                             </Typography>
                             <Typography variant="body1" className="subtext">
@@ -734,7 +734,7 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
                           <Grid item className="project-yield-sent">
                             <div style={{ display: "flex", flexDirection: "row", justifyContent: "flex-end" }}>
                               <Typography variant="h6" align="right">
-                                <SvgIcon component={GiveSohm} style={{ marginRight: "0.33rem" }} />
+                                <SvgIcon component={GiveStoc} style={{ marginRight: "0.33rem" }} />
                                 <strong>{parseFloat(donationInfo[donationId].yieldDonated).toFixed(2)}</strong>
                               </Typography>
                             </div>

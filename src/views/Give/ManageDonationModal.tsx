@@ -121,10 +121,10 @@ export function ManageDonationModal({
   const isSmallScreen = useMediaQuery("(max-width: 600px)");
   const isMediumScreen = useMediaQuery("(max-width: 960px)") && !isSmallScreen;
 
-  const sohmBalance: string = useSelector((state: DonationInfoState) => {
-    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)
-      ? state.account.balances && state.account.balances.mockSohm
-      : state.account.balances && state.account.balances.sohm;
+  const stocBalance: string = useSelector((state: DonationInfoState) => {
+    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)
+      ? state.account.balances && state.account.balances.mockStoc
+      : state.account.balances && state.account.balances.stoc;
   });
 
   const isAccountLoading: boolean = useSelector((state: DonationInfoState) => {
@@ -132,7 +132,7 @@ export function ManageDonationModal({
   });
 
   const isGiveLoading: boolean = useSelector((state: DonationInfoState) => {
-    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)
+    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)
       ? state.account.mockGiving.loading
       : state.account.giving.loading;
   });
@@ -211,7 +211,7 @@ export function ManageDonationModal({
   };
 
   const getSOhmBalance = (): BigNumber => {
-    return new BigNumber(sohmBalance);
+    return new BigNumber(stocBalance);
   };
 
   const getCurrentDepositAmount = (): BigNumber => {
@@ -228,7 +228,7 @@ export function ManageDonationModal({
    * @returns BigNumber
    */
   const getMaximumDepositAmount = (): BigNumber => {
-    return new BigNumber(sohmBalance).plus(currentDepositAmount ? currentDepositAmount : 0);
+    return new BigNumber(stocBalance).plus(currentDepositAmount ? currentDepositAmount : 0);
   };
 
   const getDepositAmountDiff = (): BigNumber => {
@@ -575,7 +575,7 @@ export function ManageDonationModal({
         <div className="manage-donation-details">
           <Box className="donation-details">
             <div className="details-row">
-              <div className="sohm-allocation-col">
+              <div className="stoc-allocation-col">
                 <Typography variant="body1">
                   <Trans>Current sOHM deposit</Trans>
                 </Typography>
@@ -609,7 +609,7 @@ export function ManageDonationModal({
         <div className="manage-donation-details">
           <Box className="donation-details">
             <div className="details-row">
-              <div className="sohm-allocation-col">
+              <div className="stoc-allocation-col">
                 <Typography variant="body1">
                   <Trans>Current sOHM deposit</Trans>
                 </Typography>
@@ -649,7 +649,7 @@ export function ManageDonationModal({
       headerText={getModalTitle() + " Donation"}
       closePosition="right"
       topLeft={getEscapeComponent()}
-      className={`ohm-modal ${isMediumScreen ? "medium" : isSmallScreen ? "smaller" : ""}`}
+      className={`toc-modal ${isMediumScreen ? "medium" : isSmallScreen ? "smaller" : ""}`}
       minHeight="300px"
     >
       {shouldShowEditScreen()

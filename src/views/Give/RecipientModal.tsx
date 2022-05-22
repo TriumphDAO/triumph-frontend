@@ -86,16 +86,16 @@ export function RecipientModal({ isModalOpen, eventSource, callbackFunc, cancelF
    *
    * TODO consider extracting this into a helper file
    */
-  const sohmBalance: string = useSelector((state: DonationInfoState) => {
-    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)
-      ? state.account.balances && state.account.balances.mockSohm
-      : state.account.balances && state.account.balances.sohm;
+  const stocBalance: string = useSelector((state: DonationInfoState) => {
+    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)
+      ? state.account.balances && state.account.balances.mockStoc
+      : state.account.balances && state.account.balances.stoc;
   });
 
   const giveAllowance: number = useSelector((state: DonationInfoState) => {
-    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)
-      ? state.account.mockGiving && state.account.mockGiving.sohmGive
-      : state.account.giving && state.account.giving.sohmGive;
+    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)
+      ? state.account.mockGiving && state.account.mockGiving.stocGive
+      : state.account.giving && state.account.giving.stocGive;
   });
 
   const isAccountLoading: boolean = useSelector((state: DonationInfoState) => {
@@ -103,7 +103,7 @@ export function RecipientModal({ isModalOpen, eventSource, callbackFunc, cancelF
   });
 
   const isGiveLoading: boolean = useSelector((state: DonationInfoState) => {
-    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)
+    return networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)
       ? state.account.mockGiving.loading
       : state.account.giving.loading;
   });
@@ -113,10 +113,10 @@ export function RecipientModal({ isModalOpen, eventSource, callbackFunc, cancelF
   });
 
   const onSeekApproval = async () => {
-    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockSohmEnabled(location.search)) {
-      await dispatch(changeMockApproval({ address, token: "sohm", provider, networkID: networkId }));
+    if (networkId === NetworkId.TESTNET_RINKEBY && Environment.isMockStocEnabled(location.search)) {
+      await dispatch(changeMockApproval({ address, token: "stoc", provider, networkID: networkId }));
     } else {
-      await dispatch(changeApproval({ address, token: "sohm", provider, networkID: networkId }));
+      await dispatch(changeApproval({ address, token: "stoc", provider, networkID: networkId }));
     }
   };
 
@@ -125,7 +125,7 @@ export function RecipientModal({ isModalOpen, eventSource, callbackFunc, cancelF
   }, [giveAllowance]);
 
   const getSOhmBalance = (): BigNumber => {
-    return new BigNumber(sohmBalance);
+    return new BigNumber(stocBalance);
   };
 
   /**
@@ -136,7 +136,7 @@ export function RecipientModal({ isModalOpen, eventSource, callbackFunc, cancelF
    * @returns BigNumber
    */
   const getMaximumDepositAmount = (): BigNumber => {
-    return new BigNumber(sohmBalance);
+    return new BigNumber(stocBalance);
   };
 
   const handleSetDepositAmount = (value: string) => {
@@ -249,7 +249,7 @@ export function RecipientModal({ isModalOpen, eventSource, callbackFunc, cancelF
    * @returns BigNumber instance
    */
   const getRetainedAmountDiff = (): BigNumber => {
-    return new BigNumber(sohmBalance).minus(getDepositAmount());
+    return new BigNumber(stocBalance).minus(getDepositAmount());
   };
 
   /**
@@ -386,7 +386,7 @@ export function RecipientModal({ isModalOpen, eventSource, callbackFunc, cancelF
               again.
             </Trans>
           </FormHelperText>
-          <FormControl className="ohm-modal-submit">
+          <FormControl className="toc-modal-submit">
             <PrimaryButton onClick={handleConnect}>
               <Trans>Connect Wallet</Trans>
             </PrimaryButton>
@@ -405,11 +405,11 @@ export function RecipientModal({ isModalOpen, eventSource, callbackFunc, cancelF
           <Box className="help-text">
             <Typography variant="h6" className="stream-note" color="textSecondary">
               <Trans>
-                Is this your first time donating sOHM? Please approve OlympusDAO to use your sOHM for donating.
+                Is this your first time donating sOHM? Please approve TriumphDAO to use your sOHM for donating.
               </Trans>
             </Typography>
           </Box>
-          <FormControl className="ohm-modal-submit">
+          <FormControl className="toc-modal-submit">
             <PrimaryButton
               disabled={isPendingTxn(pendingTransactions, PENDING_TXN_GIVE_APPROVAL) || isAccountLoading}
               onClick={onSeekApproval}
@@ -465,7 +465,7 @@ export function RecipientModal({ isModalOpen, eventSource, callbackFunc, cancelF
             <></>
           )
         }
-        <FormControl className="ohm-modal-submit">
+        <FormControl className="toc-modal-submit">
           <PrimaryButton disabled={!canSubmit()} onClick={handleContinue}>
             <Trans>Continue</Trans>
           </PrimaryButton>
@@ -493,7 +493,7 @@ export function RecipientModal({ isModalOpen, eventSource, callbackFunc, cancelF
           style={{ border: "1px solid #999999", borderRadius: "10px", padding: "20px" }}
         >
           <div className="details-row">
-            <div className="sohm-allocation-col">
+            <div className="stoc-allocation-col">
               <Typography variant="body1">
                 <Trans>sOHM deposit</Trans>
               </Typography>
@@ -510,7 +510,7 @@ export function RecipientModal({ isModalOpen, eventSource, callbackFunc, cancelF
             </div>
           </div>
         </Box>{" "}
-        <FormControl className="ohm-modal-submit">
+        <FormControl className="toc-modal-submit">
           <PrimaryButton disabled={!canSubmit()} onClick={handleSubmit}>
             {txnButtonText(
               pendingTransactions,
@@ -538,7 +538,7 @@ export function RecipientModal({ isModalOpen, eventSource, callbackFunc, cancelF
       headerText={getTitle()}
       closePosition="right"
       topLeft={getEscapeComponent()}
-      className={`ohm-modal ${isSmallScreen ? "smaller" : ""}`}
+      className={`toc-modal ${isSmallScreen ? "smaller" : ""}`}
       minHeight="300px"
     >
       {shouldShowConfirmationScreen() ? getConfirmationScreen() : getAmountScreen()}

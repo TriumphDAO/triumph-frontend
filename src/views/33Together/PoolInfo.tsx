@@ -9,7 +9,7 @@ interface PoolInfoProps {
   graphLoading: boolean;
   isAccountLoading: boolean;
   poolBalance?: string;
-  sohmBalance?: string;
+  stocBalance?: string;
   yourTotalAwards?: string;
   yourOdds?: string | number;
   winners: string | number;
@@ -62,7 +62,7 @@ export const PoolInfo = (props: PoolInfoProps) => {
               />
               <DataRow
                 title={t`Your wallet balance`}
-                balance={`${props.sohmBalance} sOHM`}
+                balance={`${props.stocBalance} sOHM`}
                 isLoading={props.isAccountLoading || props.graphLoading}
               />
             </Box>
@@ -87,7 +87,7 @@ export const PoolInfo = (props: PoolInfoProps) => {
             isLoading={props.graphLoading}
           />
           <DataRow title={t`Yield Source`} balance="sOHM" />
-          <DataRow title={t`Pool owner`} balance="OlympusDAO" />
+          <DataRow title={t`Pool owner`} balance="TriumphDAO" />
           <Divider color="secondary" />
           <DataRow title={t`Early Exit Fee`} balance={`${creditLimitPercentage}%`} isLoading={poolLoadedCount === 1} />
           <DataRow

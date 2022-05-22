@@ -5,11 +5,11 @@ import { DecimalBigNumber } from "src/helpers/DecimalBigNumber/DecimalBigNumber"
 import { nonNullable } from "src/helpers/types/nonNullable";
 import {
   useFuseBalance,
-  useGohmBalance,
-  useGohmTokemakBalance,
-  useSohmBalance,
-  useV1SohmBalance,
-  useWsohmBalance,
+  useGtocBalance,
+  useGtocTokemakBalance,
+  useStocBalance,
+  useV1StocBalance,
+  useWstocBalance,
 } from "src/hooks/useBalance";
 import { useCurrentIndex } from "src/hooks/useCurrentIndex";
 import { useStakingRebaseRate } from "src/hooks/useStakingRebaseRate";
@@ -19,42 +19,42 @@ import { NetworkId } from "src/networkDetails";
 export const StakeNextRebaseAmount = () => {
   const { data: rebaseRate } = useStakingRebaseRate();
 
-  const sohmBalances = useSohmBalance();
-  const gohmBalances = useGohmBalance();
-  const wsohmBalances = useWsohmBalance();
-  const v1sohmBalances = useV1SohmBalance();
-  const gohmFuseBalances = useFuseBalance();
-  const gohmTokemakBalances = useGohmTokemakBalance();
+  const stocBalances = useStocBalance();
+  const gtocBalances = useGtocBalance();
+  const wstocBalances = useWstocBalance();
+  const v1stocBalances = useV1StocBalance();
+  const gtocFuseBalances = useFuseBalance();
+  const gtocTokemakBalances = useGtocTokemakBalance();
 
   const networks = useTestableNetworks();
   const { data: currentIndex } = useCurrentIndex();
 
-  const sohmTokens = [sohmBalances[networks.MAINNET].data, v1sohmBalances[networks.MAINNET].data];
-  const totalSohmBalance = sohmTokens
+  const stocTokens = [stocBalances[networks.MAINNET].data, v1stocBalances[networks.MAINNET].data];
+  const totalStocBalance = stocTokens
     .filter(nonNullable)
     .reduce((res, bal) => res.add(bal), new DecimalBigNumber("0", 9));
 
-  const gohmTokens = [
-    gohmBalances[networks.MAINNET].data,
-    gohmBalances[NetworkId.ARBITRUM].data,
-    gohmBalances[NetworkId.AVALANCHE].data,
-    gohmBalances[NetworkId.POLYGON].data,
-    gohmBalances[NetworkId.FANTOM].data,
-    gohmBalances[NetworkId.OPTIMISM].data,
-    wsohmBalances[NetworkId.MAINNET].data,
-    wsohmBalances[NetworkId.ARBITRUM].data,
-    wsohmBalances[NetworkId.AVALANCHE].data,
-    gohmFuseBalances[NetworkId.MAINNET].data,
-    gohmTokemakBalances[NetworkId.MAINNET].data,
+  const gtocTokens = [
+    gtocBalances[networks.MAINNET].data,
+    gtocBalances[NetworkId.ARBITRUM].data,
+    gtocBalances[NetworkId.AVALANCHE].data,
+    gtocBalances[NetworkId.POLYGON].data,
+    gtocBalances[NetworkId.FANTOM].data,
+    gtocBalances[NetworkId.OPTIMISM].data,
+    wstocBalances[NetworkId.MAINNET].data,
+    wstocBalances[NetworkId.ARBITRUM].data,
+    wstocBalances[NetworkId.AVALANCHE].data,
+    gtocFuseBalances[NetworkId.MAINNET].data,
+    gtocTokemakBalances[NetworkId.MAINNET].data,
   ];
-  const totalGohmBalance = gohmTokens
+  const totalGtocBalance = gtocTokens
     .filter(nonNullable)
     .reduce((res, bal) => res.add(bal), new DecimalBigNumber("0", 18));
 
   const props: PropsOf<typeof DataRow> = { title: t`Next Reward Amount` };
 
-  if (rebaseRate && sohmBalances && totalGohmBalance && currentIndex) {
-    const nextRewardAmount = rebaseRate * totalGohmBalance.mul(currentIndex, 9).add(totalSohmBalance).toApproxNumber();
+  if (rebaseRate && stocBalances && totalGtocBalance && currentIndex) {
+    const nextRewardAmount = rebaseRate * totalGtocBalance.mul(currentIndex, 9).add(totalStocBalance).toApproxNumber();
     props.balance = `${formatNumber(nextRewardAmount, 4)} sOHM`;
   } else props.isLoading = true;
 
