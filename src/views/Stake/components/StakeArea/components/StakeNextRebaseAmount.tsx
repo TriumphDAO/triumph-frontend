@@ -5,11 +5,10 @@ import { DecimalBigNumber } from "src/helpers/DecimalBigNumber/DecimalBigNumber"
 import { nonNullable } from "src/helpers/types/nonNullable";
 import {
   useFuseBalance,
-  useGtocBalance,
-  useGtocTokemakBalance,
-  useStocBalance,
-  useV1StocBalance,
-  useWstocBalance,
+  useGohmBalance,
+  useSohmBalance,
+  useV1SohmBalance,
+  useWsohmBalance,
 } from "src/hooks/useBalance";
 import { useCurrentIndex } from "src/hooks/useCurrentIndex";
 import { useStakingRebaseRate } from "src/hooks/useStakingRebaseRate";
@@ -19,12 +18,12 @@ import { NetworkId } from "src/networkDetails";
 export const StakeNextRebaseAmount = () => {
   const { data: rebaseRate } = useStakingRebaseRate();
 
-  const stocBalances = useStocBalance();
-  const gtocBalances = useGtocBalance();
-  const wstocBalances = useWstocBalance();
-  const v1stocBalances = useV1StocBalance();
+  const stocBalances = useSohmBalance();
+  const gtocBalances = useGohmBalance();
+  const wstocBalances = useWsohmBalance();
+  const v1stocBalances = useV1SohmBalance();
   const gtocFuseBalances = useFuseBalance();
-  const gtocTokemakBalances = useGtocTokemakBalance();
+  const gtocTokemakBalances = useGohmBalance();
 
   const networks = useTestableNetworks();
   const { data: currentIndex } = useCurrentIndex();
