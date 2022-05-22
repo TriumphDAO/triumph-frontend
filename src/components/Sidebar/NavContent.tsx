@@ -66,7 +66,7 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
       <Box className="dapp-sidebar-inner" display="flex" justifyContent="space-between" flexDirection="column">
         <div className="dapp-menu-top">
           <Box className="branding-header">
-            <Link href="https://olympusdao.finance" target="_blank">
+            <Link href="" target="_blank">
               <SvgIcon
                 color="primary"
                 component={TriumphIcon}
@@ -82,78 +82,7 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
             <div className="dapp-nav" id="navbarNav">
               {networkId === NetworkId.MAINNET || networkId === NetworkId.TESTNET_RINKEBY ? (
                 <>
-                  <NavItem to="/dashboard" icon="dashboard" label={t`Dashboard`} />
                   <NavItem to="/bonds" icon="bond" label={t`Bond`} />
-                  <div className="dapp-menu-data discounts">
-                    <div className="bond-discounts">
-                      {sortedBonds.length > 0 && (
-                        <Accordion className="discounts-accordion" square defaultExpanded={true}>
-                          <AccordionSummary
-                            expandIcon={
-                              <ExpandMore className="discounts-expand" style={{ width: "18px", height: "18px" }} />
-                            }
-                          >
-                            <Typography variant="body2">
-                              <Trans>Highest Discount</Trans>
-                            </Typography>
-                          </AccordionSummary>
-                          <AccordionDetails>
-                            {sortedBonds.map((bond, i) => {
-                              return (
-                                <Link
-                                  component={NavLink}
-                                  to={`/bonds/${bond.index}`}
-                                  key={i}
-                                  className={"bond"}
-                                  onClick={handleDrawerToggle}
-                                >
-                                  <Typography variant="body2">
-                                    {bond.displayName}
-                                    <span className="bond-pair-roi">
-                                      <DisplayBondDiscount key={bond.index} bond={bond} />
-                                    </span>
-                                  </Typography>
-                                </Link>
-                              );
-                            })}
-                          </AccordionDetails>
-                        </Accordion>
-                      )}
-                      {sortedInverseBonds.length > 0 && (
-                        <Accordion className="discounts-accordion" square defaultExpanded={true}>
-                          <AccordionSummary
-                            expandIcon={
-                              <ExpandMore className="discounts-expand" style={{ width: "18px", height: "18px" }} />
-                            }
-                          >
-                            <Typography variant="body2">
-                              <Trans>Inverse Bonds</Trans>
-                            </Typography>
-                          </AccordionSummary>
-                          <AccordionDetails>
-                            {sortedInverseBonds.map((bond, i) => {
-                              return (
-                                <Link
-                                  component={NavLink}
-                                  to={`/bonds/inverse/${bond.index}`}
-                                  key={i}
-                                  className={"bond"}
-                                  onClick={handleDrawerToggle}
-                                >
-                                  <Typography variant="body2">
-                                    {bond.displayName}
-                                    <span className="bond-pair-roi">
-                                      <DisplayBondDiscount key={bond.index} bond={bond} />
-                                    </span>
-                                  </Typography>
-                                </Link>
-                              );
-                            })}
-                          </AccordionDetails>
-                        </Accordion>
-                      )}
-                    </div>
-                  </div>
                   <NavItem to="/stake" icon="stake" label={t`Stake`} />
                   <NavItem to="/voting" icon="governance" label={t`Voting`} />
                 </>
